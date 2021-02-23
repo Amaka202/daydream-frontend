@@ -1,0 +1,17 @@
+.homeheader-container{
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.logo-div img{
+    width: 10rem;
+    height: 3rem;
+}
+
+.homeheader-nav{
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+}

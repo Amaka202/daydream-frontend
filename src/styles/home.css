@@ -1,0 +1,80 @@
+.hero-write-up h2{
+    line-height: 60px;
+    font-size: 3em;
+}
+
+.hero-write-up h2:nth-child(3){
+    margin-bottom: 2rem;
+}
+
+.hero-write-up p{
+    line-height: 25px;
+}
+
+.hero-write-up button{
+    margin-top: 3rem;
+}
+
+
+.hero-img-div img{
+    width: 100%;
+}
+
+.spiral-section{
+    margin: 2rem 0;
+    max-width: 100vw;
+    text-align: center;
+}
+
+.spiral-section img{
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.phone-mockup img{
+    width: 100%;
+}
+
+.mockup-write{
+    width: 50%;
+    margin: auto;
+}
+
+.mockup-write p{
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    font-size: 1em;
+}
+
+.quotes-author{
+    font-style: italic;
+    font-size: 1.2em;
+    margin-top: 2rem;
+    letter-spacing: 2.5%;
+}
+
+.app-desc{
+    margin: 0 -2rem;
+    padding: -7rem;
+    background-color: #F1F4F6;
+}
+
+.desc-item{
+    margin: 4rem 0;
+}
+
+.desc-write-up{
+    margin: auto;
+    padding: 2%;
+    line-height: 30px;
+    text-align: center;
+}
+
+.desc-write-up h4{
+    color: rgba(255, 2, 2, 0.8);
+    font-size: 2.5em;
+    margin-bottom: 2rem;
+}

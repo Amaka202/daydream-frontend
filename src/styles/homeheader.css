@@ -1,38 +1,9 @@
-.primary-btn{
-    background-color: rgba(255, 2, 2, 0.8);
-    color: white;
-}
-
-.primary-btn:hover{
-    background-color: rgba(255, 2, 2, 0.5);
-    color: white;
-
-}
-
-.primary-btn:active{
-    background-color: rgba(255, 2, 2, 0.7);
-    color: white;
-
-}
-
-.primary-btn:focus{
-    background-color: rgba(255, 2, 2, 0.6);
-    color: white;
-
-}
-
-.primary-btn:visited{
-    background-color: rgba(255, 2, 2, 0.7);
-    color: white;
-
-}
-
-
 .homeheader-container{
-    padding: 1rem 2rem;
+    padding: 1rem 0;
     display: flex;
     justify-content: space-between;
     align-content: space-between;
+
 }
 
 .logo-div img{
@@ -44,12 +15,8 @@
     display: flex;
     align-content: center;
     /* justify-content: center; */
-    margin: 1rem 0;
 }
 
 .homeheader-nav button{
-    width: 10rem;
-    height: 2.7rem;
-    margin-left: 3rem;
-    border-radius: 1.3rem;
+    margin-left: 3rem; 
 }

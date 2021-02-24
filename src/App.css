@@ -1,0 +1,65 @@
+body{
+    color: #252223;
+
+}
+
+.app-container{
+    padding: 2% 5%;
+}
+
+.page-container{
+    margin: 2rem;
+
+}
+
+.primary-btn{
+    background-color: rgba(255, 2, 2, 0.8);
+    color: white;
+    width: 10rem;
+    height: 2.7rem;
+    border-radius: 1.3rem;
+}
+
+.primary-btn:hover{
+    background-color: rgba(255, 2, 2, 0.5);
+    color: white;
+
+}
+
+.primary-btn:active{
+    background-color: rgba(255, 2, 2, 0.7);
+    color: white;
+
+}
+
+.primary-btn:focus{
+    background-color: rgba(255, 2, 2, 0.6);
+    color: white;
+
+}
+
+.primary-btn:visited{
+    background-color: rgba(255, 2, 2, 0.7);
+    color: white;
+
+}
+
+.flexed{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.reverse-flexed{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.flex-item{
+    width: 50%;
+}
+
+.flex-item img{
+    width: 100%;
+}

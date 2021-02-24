@@ -1,6 +1,6 @@
 import logo from './logo.svg';
-import './App.css';
 import 'rsuite/dist/styles/rsuite-default.css';
+import './App.css';
 import { Route, Switch } from "react-router-dom";
 import Entries from './components/Entries';
 import Home from './components/Home';

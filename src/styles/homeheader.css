@@ -1,8 +1,11 @@
 .homeheader-container{
-    padding: 1rem 0;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-content: space-between;
+    /* border: 1px solid gray; */
+    border-radius: 0 0 20px 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 }
 
@@ -19,4 +22,20 @@
 
 .homeheader-nav button{
     margin-left: 3rem; 
+}
+
+@media only screen and (max-width: 700px){
+    .homeheader-container{
+        padding: 1rem;
+    }
+    .logo-div img{
+        width: 8rem;
+        height: 2.5rem;
+        margin-right: 2rem;
+    }
+
+    .homeheader-nav button{
+        margin-left: 1rem; 
+    }
+
 }

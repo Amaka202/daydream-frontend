@@ -11,31 +11,41 @@ import forWritters from '../img/for-writers.png'
 import forMultitask from '../img/for-everyone.png'
 import forEveryone from '../img/for-multitaskers.png'
 import tooTired from '../img/too-tired.png'
+import twiterLogo from '../img/twitter.png'
+import blac from '../img/blac-chyna.jpg'
+import kim from '../img/kim.jpg'
+import kylie from '../img/kylie.jpg'
+import drake from '../img/drake.jpg'
+import MyFooter from './MyFooter';
 
 function Home() {
     return (
-        <div className="app-container">
+        <div className="home-container">
             <header>
                 <HomeHeader />
             </header>
             <section className="page-container">
-                <section className="hero-section flexed">
-                    <div className="hero-write-up flex-item">
-                        <h2>The <span style={{color: 'rgba(255, 2, 2, 0.8)'}}>most</span> trusted online</h2>
-                        <h2>private journal and</h2>
-                        <h2>reminder app</h2>
-                        <p>Write private online journals securely and anonymously or public </p>
-                        <p>journals to share and get connected with other journal writers.</p>
-                        <Button className="primary-btn">GET STARTED</Button>
+                <div className="hero-section page-padding">
+                    <section className=" flexed">
+                        <div className="hero-write-up flex-item">
+                            <h2>The <span style={{color: 'rgba(255, 2, 2, 0.8)'}}>most</span> trusted online</h2>
+                            <h2>private journal and</h2>
+                            <h2>reminder app</h2>
+                            <p>Write private online journals securely and anonymously or public </p>
+                            <p>journals to share and get connected with other journal writers.</p>
+                        </div>
+                        <div className="hero-img-div flex-item">
+                        <img src={heroPic} alt="hero-pic"/>
+                        </div>
+                    </section>
+                    <div className="hero-btn">
+                       <Button className="primary-btn">GET STARTED</Button>
                     </div>
-                    <div className="hero-img-div flex-item">
-                       <img src={heroPic} alt="hero-pic"/>
-                    </div>
-                </section>
+                </div>
                 <section className="spiral-section">
                     <img src={spiral} alt="spiral"/>
                 </section>
-                <section className="phone-mockup-section flexed">
+                <section className="phone-mockup-section flexed page-padding">
                     <div className="phone-mockup flex-item">
                         <img src={mobileMockup} alt="phone-mockup"/>
                     </div>
@@ -54,7 +64,7 @@ function Home() {
                 <section className="spiral-section">
                     <img src={spiral} alt="spiral"/>
                 </section>
-                <section className="app-desc">
+                <section className="app-desc page-padding">
                     <section className="flexed desc-item">
                         <div className="flex-item desc-write-up">
                             <h4>For Writers</h4>
@@ -68,7 +78,7 @@ function Home() {
                             <img src={forWritters} alt="writer"/>
                         </div>
                     </section>
-                    <section className="flexed desc-item">
+                    <section className="reverse-flexed desc-item">
                     <div className="flex-item">
                             <img src={forMultitask} alt="writer"/>
                     </div>
@@ -94,7 +104,7 @@ function Home() {
                             <img src={forEveryone} alt="writer"/>
                         </div>
                     </section>
-                    <section className="flexed desc-item">
+                    <section className="reverse-flexed desc-item">
                     <div className="flex-item">
                             <img src={tooTired} alt="writer"/>
                         </div>
@@ -111,8 +121,84 @@ function Home() {
                 <section className="spiral-section">
                     <img src={spiral} alt="spiral"/>
                 </section>
+                <section className="testimonial-section page-padding">
+                    <h4>Why Daydream?</h4>
+                    <div className="flexed">
+                        <div className="flex-item tweet">
+                            <div className="testimonial-body">
+                                <div className="testimonial-body dp-div">
+                                    <img src={blac} alt="twiter-dp"/>
+                                    <div>
+                                        <p style={{fontWeight: 'bold'}}>Blac Chyna</p>
+                                        <p style={{color: '#BBBCBD'}}>@blacchyna</p>
+                                    </div>
+                                </div>
+                                <div className="twitter-logo-div">
+                                    <img src={twiterLogo} alt="twitter-logo" />
+                                </div>
+                            </div>
+                            <p className="" style={{color: '#555D61', marginTop: '1rem'}}><span style={{color: '#2AA4EF'}}>@daydream</span> is the best productivity app I have. So on point!</p>
+                        </div>
+                        <div className="flex-item tweet">
+                            <div className="testimonial-body">
+                                <div className="testimonial-body dp-div">
+                                    <img src={kim} alt="twiter-dp"/>
+                                    <div>
+                                        <p style={{fontWeight: 'bold'}}>Kim Kardashian</p>
+                                        <p style={{color: '#BBBCBD'}}>@kimkardashian</p>
+                                    </div>
+                                </div>
+                                <div className="twitter-logo-div">
+                                    <img src={twiterLogo} alt="twitter-logo" />
+                                </div>
+                            </div>
+                            <p className="" style={{color: '#555D61', marginTop: '1rem'}}><span style={{color: '#2AA4EF'}}>@daydream</span> is the best productivity app I have. So on point!</p>
+                        </div>
+                    </div>
+                    <div className="flexed">
+                        <div className="flex-item tweet">
+                            <div className="testimonial-body">
+                                <div className="testimonial-body dp-div">
+                                    <img src={drake} alt="twiter-dp"/>
+                                    <div>
+                                        <p style={{fontWeight: 'bold'}}>Drake</p>
+                                        <p style={{color: '#BBBCBD'}}>@drake</p>
+                                    </div>
+                                </div>
+                                <div className="twitter-logo-div">
+                                    <img src={twiterLogo} alt="twitter-logo" />
+                                </div>
+                            </div>
+                            <p className="" style={{color: '#555D61', marginTop: '1rem'}}><span style={{color: '#2AA4EF'}}>@daydream</span> is the best productivity app I have. So on point!</p>
+                        </div>
+                        <div className="flex-item tweet">
+                            <div className="testimonial-body">
+                                <div className="testimonial-body dp-div">
+                                    <img src={kylie} alt="twiter-dp"/>
+                                    <div>
+                                        <p style={{fontWeight: 'bold'}}>Kylie Jenner</p>
+                                        <p style={{color: '#BBBCBD'}}>@kyliejenner</p>
+                                    </div>
+                                </div>
+                                <div className="twitter-logo-div">
+                                    <img src={twiterLogo} alt="twitter-logo" />
+                                </div>
+                            </div>
+                            <p className="" style={{color: '#555D61', marginTop: '1rem'}}><span style={{color: '#2AA4EF'}}>@daydream</span> is the best productivity app I have. So on point!</p>
+                        </div>
+                    </div>
+                </section>
+                <section className="spiral-section">
+                    <img src={spiral} alt="spiral"/>
+                </section>
+                <section className="join-section page-padding">
+                    <p>JOIN NOW AND START USING THIS AWESOME WEBSITE</p>
+                    <p>FOR FREE!</p>
+                    <Button className="primary-btn">GET STARTED</Button>
+                </section>
             </section>
             <footer>
+                <MyFooter />
              </footer>
         </div>
     )

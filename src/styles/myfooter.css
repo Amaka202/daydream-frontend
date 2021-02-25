@@ -1,0 +1,29 @@
+.social-links{
+    margin: auto;
+    text-align: center;
+}
+
+.my-footer{
+    padding: 2rem 1rem;
+    border-radius: 20px 20px 0 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.my-footer p{
+    text-align: center;
+}
+
+.footer-nav{
+    margin: auto;
+    text-align: center;
+}
+
+.footer-nav {
+    
+}
+
+@media only screen and (max-width: 700px){
+    .social-links{
+        margin: 1rem 0;
+    }
+}

@@ -6,6 +6,7 @@ body{
     color: #252223;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 .page-padding{
@@ -64,6 +65,10 @@ body{
 
 .flex-item img{
     width: 100%;
+}
+
+.required-star{
+    color: red;
 }
 
 

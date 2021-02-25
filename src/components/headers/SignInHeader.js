@@ -12,7 +12,7 @@ function SignInHeader() {
                 <img src={logo} alt="app-logo"/>
             </div>
             <div className="homeheader-nav">
-                <Button className="primary-btn">CREATE</Button>
+                <Button className="primary-btn">Create Account</Button>
             </div>
         </div>
     )

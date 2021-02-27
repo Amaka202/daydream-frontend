@@ -1,17 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {useHistory} from 'react-router-dom'
 import {createEntry} from '../store/actions/entriesActions';
 import SignedInHeader from './headers/SignedInHeader';
 import MyFooter from './MyFooter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Button, Divider } from 'rsuite';
 import { Calendar } from 'antd';
 import '../styles/reminders.css';
 
 
 function Reminders({reminders}) {
+     const history = useHistory();
+
+     const redirectToSetReminders = () => {
+         history.push('./createreminder')
+     }
     const element1 = <FontAwesomeIcon icon={faTrash} />
 
     function onPanelChange(value, mode) {
@@ -28,7 +33,7 @@ function Reminders({reminders}) {
                 <h4 className="page-title">All Reminders</h4>
                 <div>
                     <div className="reminder-btn">
-                        <Button className="secondary-btn">Create New</Button>
+                            <Button className="secondary-btn" onClick={redirectToSetReminders}>Create New</Button>
                     </div>
                 </div>
                 <section className="reminder-body flexed">

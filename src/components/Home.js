@@ -25,10 +25,6 @@ function Home() {
     const redirectToSignUp = () => {
         history.push('/signup')
     }
-
-    const redirectToLogin = () => {
-        history.push('/login')
-    }
     return (
         <div className="home-container">
             <header>

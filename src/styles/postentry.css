@@ -1,0 +1,21 @@
+.form-field{
+    margin-bottom: 1rem;
+}
+
+.form-field input, label, select{
+    display: block;
+}
+
+.form-field label{
+    margin-bottom: 0.5rem;
+}
+
+.form-field input, .form-field textarea, .form-field select{
+    border-radius: 10px;
+    width: 100%;
+    padding: 0.5em 1rem;
+}
+
+.post-entry-btn-div button{
+    padding: 0.7em;
+}

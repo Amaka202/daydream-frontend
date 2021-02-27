@@ -7,6 +7,12 @@
     padding: 2rem 1rem;
     border-radius: 20px 20px 0 0;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: sticky;
+    bottom: 0;
+    width:100%;
+    z-index: 100;
+    /* margin-top: -10em; */
+    background-color: white;
 }
 
 .my-footer p{

@@ -1,0 +1,29 @@
+.display-entries-section{
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    background-color: #F5F5F5;
+    /* height: 100%; */
+}
+
+.display-entries{
+    margin-right: 1rem;
+    width: 30%;
+}
+
+.display-entry{
+    width: 40%;
+    margin-right: 1rem;
+
+}
+
+.display-calender{
+    width: 30%;
+}
+
+@media only screen and (max-width: 700px) {
+    .display-entries-section{
+        display: block;
+        padding: 2rem;
+    }
+}

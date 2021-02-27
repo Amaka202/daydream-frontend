@@ -1,0 +1,22 @@
+.empty-entries-container{
+    margin-top: 5em;
+    margin-bottom: 2em;
+}
+
+.empty-text{
+    line-height: 30px;
+    font-size: 0.9em;
+}
+
+.empty-btn button{
+    background-color: #ffdb58;
+    color: white;
+    border: none;
+    font-size: 0.9em;
+}
+
+.empty-btn button:hover{
+    background-color: #f1d779;
+    color: white;
+
+}

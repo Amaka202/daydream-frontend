@@ -7,6 +7,8 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  position: relative;
+
 }
 
 .page-padding{
@@ -71,10 +73,14 @@ body{
     color: red;
 }
 
+.content{
+    /* min-height: 100%; */
+    /* padding-bottom: 10em; */
+}
 
 @media only screen and (max-width: 700px){
     body{
-        font-size: 70%;
+        font-size: 80%;
     }
 
     .page-padding{

@@ -1,14 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux';
 import {createEntry} from '../store/actions/entriesActions';
+import SignedInHeader from './headers/SignedInHeader';
 
-function enteries({entries}) {
+function Reminders({reminders}) {
     return (
         <div>
+            <SignedInHeader />
             <h1>hey</h1>
-            <ul>
-                {entries.map(val => <li>{val.entry}</li>)}
-            </ul>
+            
         </div>
     )
 }
@@ -25,4 +25,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(enteries);
+export default connect(mapStateToProps, mapDispatchToProps)(Reminders);

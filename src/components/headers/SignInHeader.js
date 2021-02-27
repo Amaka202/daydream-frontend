@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from 'rsuite';
-import {Link} from 'react-router-dom';
 import logo from '../../img/logo (1).png';
 import '../../styles/homeheader.css';
 

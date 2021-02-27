@@ -1,0 +1,50 @@
+.myNav{
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.signin-container{
+    padding: 1rem 2rem;
+    border-radius: 0 0 20px 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.navlinks-item{
+    margin-left: 2rem;
+    font-weight: bold;
+}
+
+.active{
+    font-size: 1.1em;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #FFDB58;
+}
+
+
+@media only screen and (max-width: 700px){
+    .navlinks{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .active{
+        font-size: 1.1em;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    
+    .navlinks-item{
+        margin-top: 2rem;
+
+    }
+
+    .burger-icon{
+        background-color: rgba(255, 2, 2, 0.8);
+    }
+
+    .burger-icon:active{
+        background-color: rgba(255, 2, 2, 0.8);
+    }
+
+}

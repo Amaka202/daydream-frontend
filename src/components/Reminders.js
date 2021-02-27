@@ -1,14 +1,69 @@
-import React from 'react'
+import React from 'react';
 import {connect} from 'react-redux';
 import {createEntry} from '../store/actions/entriesActions';
 import SignedInHeader from './headers/SignedInHeader';
+import MyFooter from './MyFooter';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Button, Divider } from 'rsuite';
+import { Calendar } from 'antd';
+import '../styles/reminders.css';
+
 
 function Reminders({reminders}) {
+    const element1 = <FontAwesomeIcon icon={faTrash} />
+
+    function onPanelChange(value, mode) {
+        console.log(value, mode);
+      }
+
+
     return (
         <div>
-            <SignedInHeader />
-            <h1>hey</h1>
-            
+            <header>
+                <SignedInHeader />
+            </header>
+            <section className="page-padding">
+                <h4 className="page-title">All Reminders</h4>
+                <div>
+                    <div className="reminder-btn">
+                        <Button className="secondary-btn">Create New</Button>
+                    </div>
+                </div>
+                <section className="reminder-body flexed">
+                    <div className="flex-item">
+                        <section className="reminder">
+                            <p className="entry-date">08:30pm 20 Febuary 2021</p>
+                            <p className="reminder-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et aliquam tellus ornare semper. Pellentesque tincidunt id dignissim aliquam, adipiscing. Nunc pellentesque dictum odio potenti mauris interdum. Id massa, tincidunt in  
+                            </p>
+                            <div style={{color: '#FF0202', paddingTop:'1rem'}}>
+                                {element1}
+                            </div>
+                        </section>
+                        <Divider />
+                        <section className="reminder">
+                            <p className="entry-date">08:30pm 20 Febuary 2021</p>
+                            <p className="reminder-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et aliquam tellus ornare semper. Pellentesque tincidunt id dignissim aliquam, adipiscing. Nunc pellentesque dictum odio potenti mauris interdum. Id massa, tincidunt in  
+                            </p>
+                            <div style={{color: '#FF0202', paddingTop:'1rem'}}>
+                                {element1}
+                            </div>
+                        </section>
+                        <Divider />
+
+
+                    </div>
+                    <section className="flex-item reminder-calender">
+                        <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+                    </section>
+                </section>
+            </section>
+            <footer>
+                <MyFooter />
+            </footer>
         </div>
     )
 }

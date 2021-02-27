@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'rsuite';
+import {useHistory} from 'react-router-dom';
 import HomeHeader from './headers/HomeHeader';
 import '../styles/home.css';
 import heroPic from '../img/hero-pic.png';
@@ -19,6 +20,15 @@ import drake from '../img/drake.jpg'
 import MyFooter from './MyFooter';
 
 function Home() {
+    const history = useHistory();
+
+    const redirectToSignUp = () => {
+        history.push('/signup')
+    }
+
+    const redirectToLogin = () => {
+        history.push('/login')
+    }
     return (
         <div className="home-container">
             <header>
@@ -39,7 +49,7 @@ function Home() {
                         </div>
                     </section>
                     <div className="hero-btn">
-                       <Button className="primary-btn">GET STARTED</Button>
+                       <Button className="primary-btn" onClick={redirectToSignUp}>GET STARTED</Button>
                     </div>
                 </div>
                 <section className="spiral-section">
@@ -194,7 +204,7 @@ function Home() {
                 <section className="join-section page-padding">
                     <p>JOIN NOW AND START USING THIS AWESOME WEBSITE</p>
                     <p>FOR FREE!</p>
-                    <Button className="primary-btn">GET STARTED</Button>
+                    <Button className="primary-btn" onClick={redirectToSignUp}>GET STARTED</Button>
                 </section>
             </section>
             <footer>

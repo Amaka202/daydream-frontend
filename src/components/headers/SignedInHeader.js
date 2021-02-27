@@ -1,13 +1,17 @@
 import React, {useState} from 'react'
 import { Button, Drawer, IconButton, Icon, Nav } from 'rsuite';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useHistory} from 'react-router-dom';
 import logo from '../../img/logo (1).png';
 import '../../styles/signedInHeader.css'
 import currentWindowWidth from '../getCurrentWidth.js';
 
 function SignedInHeader() {
+    const history = useHistory();
     const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
 
+    const redirectToLogin = () => {
+        history.push('/login')
+    }
     return (
         <div className='signin-container'>
             {currentWindowWidth()[0] > 700
@@ -21,7 +25,7 @@ function SignedInHeader() {
                         <NavLink to="/entry" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Create Entry</NavLink>         
                         <NavLink to="/reminders" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Reminders</NavLink>         
                         <NavLink to="/reminder" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Create Reminder</NavLink>
-                        <Button className="primary-btn navlinks-item">LOGOUT</Button>
+                        <Button className="primary-btn navlinks-item" onClick={redirectToLogin}>LOGOUT</Button>
                     </div>         
                 </nav>
                 :
@@ -46,7 +50,7 @@ function SignedInHeader() {
                             <NavLink to="/entry" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Create Entry</NavLink>         
                             <NavLink to="/reminders" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Reminders</NavLink>         
                             <NavLink to="/reminder" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Create Reminder</NavLink>
-                            <Button className="primary-btn navlinks-item">LOGOUT</Button>
+                            <Button className="primary-btn navlinks-item" onClick={redirectToLogin}>LOGOUT</Button>
                         </div>
                     </Drawer>
                 </div>

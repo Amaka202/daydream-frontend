@@ -1,0 +1,21 @@
+.reminder-body{
+    /* padding: 2rem; */
+}
+
+.reminder{
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+}
+
+.reminder-calender{
+    padding: 0 2rem;
+}
+
+.reminder-btn{
+    padding: 0 2rem;
+}
+
+.reminder-text{
+    font-size: 0.9em;
+    line-height: 25px;
+}

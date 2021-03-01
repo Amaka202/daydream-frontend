@@ -1,18 +1,26 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Modal } from 'antd';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Alert } from 'rsuite';
+import {useHistory} from 'react-router-dom';
+
+import {connect} from 'react-redux';
 import TextError from './TextError';
 import '../styles/postentry.css'
 import {Button} from 'rsuite';
+import {createEntry} from '../store/actions/entriesActions';
 
 
 
 function PostEntry(props) {
-    const [loading, setLoading] = useState(false);
-    const [open, setOpen] = useState(false);
+    
+  const [loading, setLoading] = useState(false);
+    // const [open, setOpen] = useState(false);
+    const history = useHistory();
+
     // const [loading, setLoading] = useState();
-    const {handleClose, show} = props;
+    const {handleClose, show, createEntry, status, time} = props;
 
     const initialValues = {
         title: "",
@@ -22,9 +30,24 @@ function PostEntry(props) {
       }
       
       const onSubmit = (values, submitProps) => {
-        
-        console.log("form value", values)
+        setLoading(true)
+        createEntry(values)
+        // console.log("form valu.e", values)
       } 
+
+      useEffect(() => {
+        if(!time){
+            return;
+        }else{
+            setLoading(false);
+            if(status.status === 'error'){
+                Alert.error(status.message, 5000)
+            }else{
+                Alert.success(status.message, 5000)
+                handleClose();
+            }
+        }
+        }, [time, status])
 
       const validationSchema = Yup.object({
         title: Yup.string().required('Required'),
@@ -109,7 +132,7 @@ function PostEntry(props) {
                 <ErrorMessage name="entry" component={TextError}/>
                 </div>       
                 <div className="post-entry-btn-div">
-                    <Button type="submit" className="secondary-btn" >Submit</Button>
+                    <Button type="submit" className="secondary-btn" loading={loading}>Submit</Button>
                 </div>
             </Form>
             </Formik>
@@ -119,4 +142,20 @@ function PostEntry(props) {
     )
 }
 
-export default PostEntry
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+      status: state.entries.data,
+      time: state.entries.time,
+      // time: state.auth.time,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createEntry: (entryData) => dispatch(createEntry(entryData))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostEntry);
+

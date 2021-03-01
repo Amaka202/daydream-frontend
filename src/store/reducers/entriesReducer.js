@@ -1,13 +1,36 @@
-const iniState = {
-    enteries: [
-        {id: 1, title: "beach day", entry: "had fun today at the beach"},
-        {id: 2, title: "none day", entry: "had fun today at the beach"},
-        {id: 3, title: "sun day", entry: "had fun today at the beach"}
-    ]
-}
+const iniState = {}
 
 const entriesReducer = (state = iniState, action) => {
-    return state;
+    switch (action.type) {
+        case 'GET ENTRIES':
+            console.log(' successful');  
+            return {
+                data: action.response,
+                time: action.time
+            }
+        case 'GET ENTRIES ERROR':
+            console.log('signup error');  
+            return {
+                ...state,
+             } 
+         case 'CREATE ENTRY SUCCESS':
+            console.log('login success');  
+            return {
+                ...state,
+                data: action.response,
+                authStatus: 'success',
+                time: action.time
+            }
+        case 'CREATE ENTRY ERROR':
+            console.log('login error');  
+            return {
+                ...state,
+                authStatus: 'error',
+             }     
+         
+        default:
+            return state;
+    }
 }
 
 export default entriesReducer;

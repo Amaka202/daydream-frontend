@@ -1,13 +1,23 @@
+import React, { useState, useEffect} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Button } from 'rsuite';
+
 import {connect} from 'react-redux';
+import { Alert } from 'rsuite';
+import {useHistory} from 'react-router-dom'
 import '../styles/signup.css'
 import TextError from './TextError';
 import SignUpHeader from './headers/SignUpHeader';
 import signupPic from '../img/create-account.png';
 import {createUser} from '../store/actions/authActions';
+import {saveToken} from './helpers/saveToken';
 
 function Signup(props) {
+    const [loading, setLoading] = useState(false);
+    const history = useHistory();
+    const {createUser, status, time} = props
+    console.log(props);
   const initialValues = {
     firstname: "",
     lastname:"",
@@ -16,9 +26,32 @@ function Signup(props) {
   }
   
   const onSubmit = (values, submitProps) => {
+    setLoading(true)
+    console.log(props);
     createUser(values)
-    console.log("form value", values)
-  }
+
+    // if(status){
+    //     Alert.success('This is a successful message.', 5000)
+
+    // }
+  
+    // console.log("form value", values)
+}
+    useEffect(() => {
+    if(!time){
+        return;
+    }else{
+        setLoading(false);
+        if(status.status === 'error'){
+            Alert.error(status.message, 5000)
+        }else{
+            Alert.success(status.message, 5000)
+            saveToken(status.token)
+            history.push('./entries')
+        }
+    }
+    }, [time, status])
+
 
   const validationSchema = Yup.object({
     firstname: Yup.string().required('Required'),
@@ -97,7 +130,7 @@ function Signup(props) {
                 <ErrorMessage name="password" component={TextError}/>
                 </div>       
                 <div className="signup-btn-div">
-                    <button type="submit" className="primary-btn" >Submit</button>
+                    <Button type="submit" className="primary-btn" loading={loading}>Submit</Button>
                 </div>
             </Form>
             </Formik>
@@ -109,14 +142,16 @@ function Signup(props) {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        entries: state.entry.enteries
+        status: state.auth.data,
+        time: state.auth.time,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createUser: (entry) => dispatch(createUser(entry))
+        createUser: (userData) => dispatch(createUser(userData))
     }
 }
 

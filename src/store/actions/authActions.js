@@ -3,24 +3,27 @@ const loginApiUrl = 'http://localhost:8000/api/v1/login'
 
 export const createUser = (userData) => {
     return (dispatch, getState) => {
-        // async call to db
-        const response = fetch(signUpApiUrl, {
+        fetch(signUpApiUrl, {
             method: 'POST',
             mode: 'cors',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(userData)
-        }).json()
-            .then(() => {
+        })
+            .then((data) => data.json())
+            .then((response) => {
                 dispatch({
                     type: 'CREATE USER SUCCESS',
+                    time: new Date(),
                     response
                 })
             })
-            .catch(() => {
+            .catch((error) => {
                 dispatch({
                     type: 'CREATE USER ERROR',
+                    time: new Date(),
+                    error
                 })
             })
     }
@@ -28,24 +31,27 @@ export const createUser = (userData) => {
 
 export const loginUser = (userData) => {
     return (dispatch, getState) => {
-        // async call to db
-        const response = fetch(loginApiUrl, {
+        fetch(loginApiUrl, {
             method: 'POST',
             mode: 'cors',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(userData)
-        }).json()
-            .then(() => {
+        })
+            .then((data) => data.json())
+            .then((response) => {
                 dispatch({
                     type: 'LOGIN USER SUCCESS',
+                    time: new Date(),
                     response
                 })
             })
-            .catch(() => {
+            .catch((error) => {
                 dispatch({
                     type: 'LOGIN USER ERROR',
+                    time: new Date(),
+                    error
                 })
             })
     }

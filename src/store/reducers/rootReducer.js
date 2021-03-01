@@ -4,7 +4,7 @@ import {combineReducers} from 'redux';
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    entry: entriesReducer
+    entries: entriesReducer
 })
 
 export default rootReducer;

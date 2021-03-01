@@ -1,20 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Alert } from 'rsuite';
 import SignInHeader from './headers/SignInHeader'
-import '../styles/signup.css'
+import '../styles/signup.css';
+import {useHistory} from 'react-router-dom';
 import TextError from './TextError'
+import {connect} from 'react-redux';
 import LoginPic from '../img/login.png';
-
+import {loginUser} from '../store/actions/authActions';
+import {saveToken} from './helpers/saveToken';
 
 function Login(props) {
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+  const {loginUser, status, time} = props
   const initialValues = {
     email: "",
     password: ""
   }
   const onSubmit = values => {
     console.log("form values", values)
+    loginUser(values)
   }
+
+  useEffect(() => {
+    if(!time){
+        return;
+    }else{
+        setLoading(false);
+        if(status.status === 'error'){
+            Alert.error(status.message, 5000)
+        }else{
+            Alert.success(status.message, 5000)
+            saveToken(status.token)
+            history.push('./entries')
+        }
+    }
+    }, [time, status])
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email format').required('Required'),
@@ -75,4 +98,19 @@ function Login(props) {
   )
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+      status: state.auth.data,
+      time: state.auth.time,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: (userData) => dispatch(loginUser(userData))
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

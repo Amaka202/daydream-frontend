@@ -34,11 +34,12 @@ function Home() {
                 <div className="hero-section page-padding">
                     <section className=" flexed">
                         <div className="hero-write-up flex-item">
-                            <h2>The <span style={{color: 'rgba(255, 2, 2, 0.8)'}}>most</span> trusted online</h2>
-                            <h2>private journal and</h2>
-                            <h2>reminder app</h2>
-                            <p>Write private online journals securely and anonymously or public </p>
-                            <p>journals to share and get connected with other journal writers.</p>
+                            <h2>The <span style={{color: 'rgba(255, 2, 2, 0.8)'}}>most</span> trusted</h2>
+                            <h2> online private journal </h2>
+                            <h2>and reminder app</h2>
+                            <p>Write private online journals securely  </p>
+                            <p>and anonymously or public journals to share</p>
+                            <p> and get connected with other journal writers.</p>
                         </div>
                         <div className="hero-img-div flex-item">
                         <img src={heroPic} alt="hero-pic"/>

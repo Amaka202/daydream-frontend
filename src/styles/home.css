@@ -1,4 +1,7 @@
+.hero-write-up{
+    margin-bottom: 2rem;
 
+}
 
 .hero-write-up h2{
     line-height: 60px;
@@ -14,7 +17,7 @@
 }
 
 .hero-write-up button{
-    margin-top: 3rem;
+    padding-top: 6rem;
 }
 
 .hero-img-div{

@@ -1,9 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import {connect} from 'react-redux';
 import '../styles/signup.css'
 import TextError from './TextError';
 import SignUpHeader from './headers/SignUpHeader';
 import signupPic from '../img/create-account.png';
+import {createUser} from '../store/actions/authActions';
 
 function Signup(props) {
   const initialValues = {
@@ -14,7 +16,7 @@ function Signup(props) {
   }
   
   const onSubmit = (values, submitProps) => {
-    
+    createUser(values)
     console.log("form value", values)
   }
 
@@ -102,8 +104,21 @@ function Signup(props) {
             </div>
                 </div>  
     
-    </div>
+    </div> 
   )
 }
 
-export default Signup;
+const mapStateToProps = (state) => {
+    return {
+        entries: state.entry.enteries
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createUser: (entry) => dispatch(createUser(entry))
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

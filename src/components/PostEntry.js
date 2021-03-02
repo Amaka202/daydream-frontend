@@ -31,19 +31,19 @@ function PostEntry(props) {
         // console.log("form valu.e", values)
       } 
 
-      // useEffect(() => {
-      //   if(!time){
-      //       return;
-      //   }else{
-      //       setLoading(false);
-      //       if(status.status === 'error'){
-      //           Alert.error(status.message, 5000)
-      //       }else{
-      //           Alert.success('status.message', 5000)
-      //           handleClose();
-      //       }
-      //   }
-      //   }, [time, status])
+      useEffect(() => {
+        if(!time){
+            return;
+        }else{
+            setLoading(false);
+            if(status.status === 'error'){
+                Alert.error(status.message, 5000)
+            }else{
+                Alert.success('status.message', 5000)
+                handleClose();
+            }
+        }
+        }, [time, status])
 
       const validationSchema = Yup.object({
         title: Yup.string().required('Required'),
@@ -141,7 +141,7 @@ function PostEntry(props) {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-      status: state.entries.data,
+      status: state.entries.entryCreated,
       time: state.entries.time,
       // time: state.auth.time,
   }

@@ -21,9 +21,9 @@ function DisplayEnteries({entries}) {
                 <section className="display-entries">
                         <Entries />
                     </section>
-                    <section className="display-entry">
+                    {/* <section className="display-entry">
                         <Entry />
-                    </section>
+                    </section> */}
                     <section className="display-calender">
                         <EntryCalender />
                     </section>

@@ -5,7 +5,8 @@ const entriesReducer = (state = iniState, action) => {
         case 'GET ENTRIES':
             console.log(' successful');  
             return {
-                data: action.response,
+                ...state,
+                entriesData: action.response.data,
             }
         case 'GET ENTRIES ERROR':
             console.log('signup error');  
@@ -16,7 +17,7 @@ const entriesReducer = (state = iniState, action) => {
             console.log('login success');  
             return {
                 ...state,
-                data: action.response,
+                entryCreated: action.response,
                 authStatus: 'success',
                 time: action.time
             }

@@ -3,8 +3,6 @@ import { Modal } from 'antd';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Alert } from 'rsuite';
-import {useHistory} from 'react-router-dom';
-
 import {connect} from 'react-redux';
 import TextError from './TextError';
 import '../styles/postentry.css'
@@ -12,12 +10,10 @@ import {Button} from 'rsuite';
 import {createEntry} from '../store/actions/entriesActions';
 
 
-
 function PostEntry(props) {
     
   const [loading, setLoading] = useState(false);
     // const [open, setOpen] = useState(false);
-    const history = useHistory();
 
     // const [loading, setLoading] = useState();
     const {handleClose, show, createEntry, status, time} = props;
@@ -35,19 +31,19 @@ function PostEntry(props) {
         // console.log("form valu.e", values)
       } 
 
-      useEffect(() => {
-        if(!time){
-            return;
-        }else{
-            setLoading(false);
-            if(status.status === 'error'){
-                Alert.error(status.message, 5000)
-            }else{
-                Alert.success(status.message, 5000)
-                handleClose();
-            }
-        }
-        }, [time, status])
+      // useEffect(() => {
+      //   if(!time){
+      //       return;
+      //   }else{
+      //       setLoading(false);
+      //       if(status.status === 'error'){
+      //           Alert.error(status.message, 5000)
+      //       }else{
+      //           Alert.success('status.message', 5000)
+      //           handleClose();
+      //       }
+      //   }
+      //   }, [time, status])
 
       const validationSchema = Yup.object({
         title: Yup.string().required('Required'),

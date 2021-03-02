@@ -37,4 +37,4 @@ function EmptyEntries() {
     )
 }
 
-export default EmptyEntries
+export default EmptyEntries;

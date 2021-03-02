@@ -6,7 +6,6 @@ const entriesReducer = (state = iniState, action) => {
             console.log(' successful');  
             return {
                 data: action.response,
-                time: action.time
             }
         case 'GET ENTRIES ERROR':
             console.log('signup error');  

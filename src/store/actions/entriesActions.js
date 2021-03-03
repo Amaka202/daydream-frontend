@@ -1,6 +1,6 @@
 import {getToken} from '../../components/helpers/getToken';
 const entriesApiUrl = 'http://localhost:8000/api/v1/entries'
-
+const deleteEntryApiUrl = 'http://localhost:8000/api/v1/entries/:entryId/delete'
 export const getEntries = () => {
     return (dispatch, getState) => {
         fetch(entriesApiUrl, {
@@ -52,6 +52,66 @@ export const createEntry = (entryData) => {
                 dispatch({
                     type: 'CREATE ENTRY ERROR',
                     time: new Date(),
+                    error
+                })
+            })
+    }
+}
+
+export const editEntry = (entryId, entryToUpdate) => {
+    const editEntryApiUrl = `http://localhost:8000/api/v1/entries/${entryId}/edit`
+    return (dispatch, getState) => {
+        console.log('i am here');
+        fetch(editEntryApiUrl, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${getToken()}`
+            },
+            body: JSON.stringify(entryToUpdate)
+        })
+            .then((data) => data.json())
+            .then((response) => {
+                dispatch({
+                    type: 'EDIT ENTRY SUCCESS',
+                    editTime: new Date(),
+                    response
+                })
+            })
+            .catch((error) => {
+                dispatch({
+                    type: 'EDIT ENTRY ERROR',
+                    editTime: new Date(),
+                    error
+                })
+            })
+    }
+}
+
+export const deleteEntry = (entryId) => {
+    const deleteEntryApiUrl = `http://localhost:8000/api/v1/entries/${entryId}/delete`
+    return (dispatch, getState) => {
+        fetch(deleteEntryApiUrl, {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${getToken()}`
+            },
+        })
+            .then((data) => data.json())
+            .then((response) => {
+                dispatch({
+                    type: 'DELETE ENTRY SUCCESS',
+                    deleteTime: new Date(),
+                    response
+                })
+            })
+            .catch((error) => {
+                dispatch({
+                    type: 'DELETE ENTRY ERROR',
+                    deleteTime: new Date(),
                     error
                 })
             })

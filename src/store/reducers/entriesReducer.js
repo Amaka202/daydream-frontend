@@ -1,3 +1,5 @@
+import { logDOM } from "@testing-library/react";
+
 const iniState = {}
 
 const entriesReducer = (state = iniState, action) => {
@@ -26,8 +28,35 @@ const entriesReducer = (state = iniState, action) => {
             return {
                 ...state,
                 authStatus: 'error',
+             }
+
+         case 'EDIT ENTRY SUCCESS':
+            console.log('edit success'); 
+            console.log(action.response); 
+            return {
+                ...state,
+                editedData: action.response,
+                timeEdited: action.editTime,
+            }
+        case 'EDIT ENTRY ERROR':
+            console.log('edit error');  
+            return {
+                ...state,
+                authStatus: 'error',
              }     
-         
+             
+         case 'DELETE ENTRY SUCCESS':
+            console.log('delete success');  
+            return {
+                ...state,
+                timeDeleted: action.deleteTime,
+            }
+        case 'DELETE ENTRY ERROR':
+            console.log('delete error');  
+            return {
+                ...state,
+                authStatus: 'error',
+             } 
         default:
             return state;
     }

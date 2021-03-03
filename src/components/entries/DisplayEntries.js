@@ -9,6 +9,7 @@ import '../../styles/displayEntries.css'
 import Entry from './Entry';
 import EntryCalender from './EntryCalender';
 import EmptyEntries from './EmptyEntries';
+import MakeEntryButton from '../MakeEntryButton';
 function DisplayEnteries({entries}) {
     return (
         <div>
@@ -17,17 +18,19 @@ function DisplayEnteries({entries}) {
             </header>
             {currentWindowWidth()[0] > 700 
             ? 
-                <section className="display-entries-section page-padding">
-                <section className="display-entries">
+                <div>
+                    <div>
+                        <MakeEntryButton />
+                    </div>
+                    <section className="display-entries-section page-padding">
+                    <section className="display-entries">
                         <Entries />
                     </section>
-                    {/* <section className="display-entry">
-                        <Entry />
-                    </section> */}
                     <section className="display-calender">
                         <EntryCalender />
                     </section>
                 </section>
+                </div>
             :
 
             <section className="display-entries-section page-padding">

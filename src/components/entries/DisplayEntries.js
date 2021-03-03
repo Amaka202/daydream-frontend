@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import {createEntry} from '../../store/actions/entriesActions';
 import SignedInHeader from '../headers/SignedInHeader';
 import MyFooter from '../MyFooter';
-import currentWindowWidth from '../getCurrentWidth.js';
+import currentWindowWidth from '../helpers/getCurrentWidth';
 import Entries from './Entries';
 import '../../styles/displayEntries.css'
 import Entry from './Entry';
 import EntryCalender from './EntryCalender';
 import EmptyEntries from './EmptyEntries';
-function Enteries({entries}) {
+function DisplayEnteries({entries}) {
     return (
         <div>
             <header>
@@ -21,9 +21,9 @@ function Enteries({entries}) {
                 <section className="display-entries">
                         <Entries />
                     </section>
-                    <section className="display-entry">
+                    {/* <section className="display-entry">
                         <Entry />
-                    </section>
+                    </section> */}
                     <section className="display-calender">
                         <EntryCalender />
                     </section>
@@ -50,7 +50,7 @@ function Enteries({entries}) {
 
 const mapStateToProps = (state) => {
     return {
-        entries: state.entry.enteries
+        // entries: state.entries.enteries
     }
 }
 
@@ -60,4 +60,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Enteries);
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayEnteries);

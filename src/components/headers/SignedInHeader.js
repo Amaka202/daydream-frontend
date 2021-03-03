@@ -3,7 +3,7 @@ import { Button, Drawer, IconButton, Icon, Nav } from 'rsuite';
 import {NavLink, useHistory} from 'react-router-dom';
 import logo from '../../img/logo (1).png';
 import '../../styles/signedInHeader.css'
-import currentWindowWidth from '../getCurrentWidth.js';
+import currentWindowWidth from '../helpers/getCurrentWidth.js';
 
 function SignedInHeader() {
     const history = useHistory();

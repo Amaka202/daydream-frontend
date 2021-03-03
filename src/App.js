@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Reminders from './components/Reminders';
 import PostEntry from './components/PostEntry';
 import SetReminder from './components/SetReminder';
+import Entry from './components/entries/Entry';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/signup' exact component={SignUp} />
           <Route path='/login' exact component={Login} />
           <Route path='/entries' exact component={DisplayEntries} />
+          {/* <Route path='/entries/:id' exact component={Entry} /> */}
           <Route path='/postentry' exact component={PostEntry} />
           <Route path='/reminders' exact component={Reminders} />
           <Route path='/createreminder' exact component={SetReminder} />

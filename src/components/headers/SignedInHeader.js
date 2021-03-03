@@ -10,6 +10,8 @@ function SignedInHeader() {
     const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
 
     const redirectToLogin = () => {
+        localStorage.removeItem('dayDreamToken');
+
         history.push('/login')
     }
     return (

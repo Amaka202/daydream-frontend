@@ -1,3 +1,3 @@
 export const saveToken = (userToken) => {
-    return localStorage.setItem('token', userToken)
+    return localStorage.setItem('dayDreamToken', userToken)
 }

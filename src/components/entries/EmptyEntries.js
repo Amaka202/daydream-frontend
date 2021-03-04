@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
-import { Empty, Button } from 'antd';
+import { Empty } from 'antd';
 import '../../styles/emptyentries.css'
 import PostEntry from '../PostEntry';
+import { Button } from 'rsuite';
+
 
 function EmptyEntries() {
     const [show, setShow] = useState(false);
@@ -27,8 +29,8 @@ function EmptyEntries() {
             </span>
             }
                 >
-            <div className="empty-btn">
-                <Button shape="round" size='medium' onClick={showModal}>Create Now</Button>
+            <div className="reminder-btn">
+                <Button className="secondary-btn" onClick={showModal}>Create New</Button>
             </div>
                 </Empty>
                 <PostEntry show={show} handleClose={hideModal}/>

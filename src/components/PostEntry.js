@@ -16,7 +16,7 @@ function PostEntry(props) {
     // const [open, setOpen] = useState(false);
 
     // const [loading, setLoading] = useState();
-    const {handleClose, show, createEntry, status, time} = props;
+    const {handleClose, show, createEntry, status, time, posterror} = props;
 
     const initialValues = {
         title: "",
@@ -36,10 +36,13 @@ function PostEntry(props) {
             return;
         }else{
             setLoading(false);
-            if(status.status === 'error'){
-                Alert.error(status.message, 5000)
+            if(posterror) {
+              Alert.error('error creating post', 5000)
+            }else if(status.status === 'success'){
+              Alert.success(status.message, 5000)
+              handleClose();
             }else{
-                Alert.success('status.message', 5000)
+                Alert.error(status.message, 5000)
                 handleClose();
             }
         }
@@ -143,6 +146,7 @@ const mapStateToProps = (state) => {
   return {
       status: state.entries.entryCreated,
       time: state.entries.time,
+      posterror: state.entries.postStatus
       // time: state.auth.time,
   }
 }

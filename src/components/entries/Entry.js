@@ -25,7 +25,6 @@ function Entry({entries, time, match, id, deleteEntry}) {
 
     console.log(id);
     let entryId = match.params.id;
-    console.log(entryId);
     const element1 = <FontAwesomeIcon icon={faTrash} />
     const element2 = <FontAwesomeIcon icon={faEdit} />
     
@@ -42,6 +41,8 @@ function Entry({entries, time, match, id, deleteEntry}) {
     const handleDelete = (id) => {
         deleteEntry(id);
         history.push('/entries')
+        window.location.reload();
+
     }
 
     const handlecancel = () => {
@@ -100,7 +101,9 @@ function Entry({entries, time, match, id, deleteEntry}) {
                     </div>
                 </div>
             :
-                <h3>hey hmm</h3>
+                <div>
+                    <p>Click on any Entry to view details</p>
+                </div>
             }
 
         </div>

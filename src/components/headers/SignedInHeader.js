@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Button, Drawer, IconButton, Icon, Nav } from 'rsuite';
-import {NavLink, useHistory} from 'react-router-dom';
+import {NavLink, useHistory, Link} from 'react-router-dom';
 import logo from '../../img/logo (1).png';
 import '../../styles/signedInHeader.css'
 import currentWindowWidth from '../helpers/getCurrentWidth.js';
@@ -33,9 +33,11 @@ function SignedInHeader() {
                 :
                 <div>
                     <nav className="myNav">
-                        <div className="logo-div">
-                            <img src={logo} alt="app-logo"/>
-                        </div>
+                        <Link to='/'>
+                            <div className="logo-div">
+                                <img src={logo} alt="app-logo"/>
+                            </div>
+                        </Link>
                         <Nav pullRight  className="nav-div">
                             <IconButton className="burger-icon" onClick={() => setOpenMobileDrawer(true)} icon={<Icon icon="bars" />}/> 
                         </Nav>

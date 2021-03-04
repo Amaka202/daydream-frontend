@@ -29,8 +29,8 @@ function Entries({entries, time, getEntries}) {
         
         <div className="entries-entry-section">
             <div className="flexed-item">
-            <h5 className="page-title">All Enteries</h5>
                 {/* <EmptyEntries /> */}
+            <h5 className="page-title">Enteries</h5>
             { entries && entries.length > 0 
                 ?
                 entries.map((val) => {
@@ -79,4 +79,3 @@ const mapStateToProps = (state) => {
   }
   
   export default connect(mapStateToProps,mapDispatchToProps)(Entries);
-  

@@ -1,17 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {useHistory} from 'react-router-dom'
-import {createEntry} from '../store/actions/entriesActions';
+import {useHistory} from 'react-router-dom';
+import dayjs from 'dayjs';
+import { Popconfirm } from 'antd';
+import {getReminders} from '../store/actions/remindersActions';
 import SignedInHeader from './headers/SignedInHeader';
 import MyFooter from './MyFooter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Button, Divider } from 'rsuite';
 import { Calendar } from 'antd';
+import {deleteReminder} from '../store/actions/remindersActions';
 import '../styles/reminders.css';
 
+var localizedFormat = require('dayjs/plugin/localizedFormat')
+dayjs.extend(localizedFormat)
 
-function Reminders({reminders}) {
+
+function Reminders({getReminders, time, reminders, deleteReminder}) {
      const history = useHistory();
 
      const redirectToSetReminders = () => {
@@ -22,6 +28,27 @@ function Reminders({reminders}) {
     function onPanelChange(value, mode) {
         console.log(value, mode);
       }
+
+      const handleDate = (d) => {
+          console.log(new Date(1614691963688).toLocaleString());
+          return new Date(d).toLocaleDateString();
+      }
+
+      const handleDelete = (reminderId) => {
+          console.log(reminderId);
+        deleteReminder(reminderId);
+        history.push('/reminders')
+        window.location.reload();
+
+    }
+
+    const handlecancel = () => {
+        return;
+    }
+
+      useEffect(() => {
+        getReminders()
+    }, [ time])
 
 
     return (
@@ -38,28 +65,34 @@ function Reminders({reminders}) {
                 </div>
                 <section className="reminder-body flexed">
                     <div className="flex-item">
-                        <section className="reminder">
-                            <p className="entry-date">08:30pm 20 Febuary 2021</p>
-                            <p className="reminder-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et aliquam tellus ornare semper. Pellentesque tincidunt id dignissim aliquam, adipiscing. Nunc pellentesque dictum odio potenti mauris interdum. Id massa, tincidunt in  
-                            </p>
-                            <div style={{color: '#FF0202', paddingTop:'1rem'}}>
-                                {element1}
-                            </div>
-                        </section>
-                        <Divider />
-                        <section className="reminder">
-                            <p className="entry-date">08:30pm 20 Febuary 2021</p>
-                            <p className="reminder-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et aliquam tellus ornare semper. Pellentesque tincidunt id dignissim aliquam, adipiscing. Nunc pellentesque dictum odio potenti mauris interdum. Id massa, tincidunt in  
-                            </p>
-                            <div style={{color: '#FF0202', paddingTop:'1rem'}}>
-                                {element1}
-                            </div>
-                        </section>
-                        <Divider />
-
-
+                        {reminders && reminders.map((val) => {
+                            return (
+                                <div key={val.id}>
+                                    {/* <Divider /> */}
+                                    <section className="reminder">
+                                        <p className="entry-date">{new Date(val.date).toLocaleString()}</p>
+                                        <p className="reminder-text">
+                                            {val.reminder}  
+                                        </p>
+                                        <Popconfirm
+                                                title="Are you sure to delete this reminder?"
+                                                onConfirm={() => handleDelete(val.id)}
+                                                onCancel={handlecancel}
+                                                okText="Yes"
+                                                cancelText="No"
+                                            >
+                                                <a href="#">
+                                                <div style={{color: '#FF0202', paddingTop:'1rem'}}>
+                                                    {element1}
+                                                </div>
+                                            </a>
+                                        </Popconfirm>
+                                        
+                                    </section>
+                                    <Divider />
+                                </div>
+                            )
+                        })}
                     </div>
                     <section className="flex-item reminder-calender">
                         <Calendar fullscreen={false} onPanelChange={onPanelChange} />
@@ -70,18 +103,21 @@ function Reminders({reminders}) {
                 <MyFooter />
             </footer>
         </div>
-    )
+    ) 
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.reminders);
     return {
-        entries: state.entry.enteries
+        reminders: state.reminders.reminderData,
+        time: state.reminders.time
     }
 }
-
+ 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createEntry: (entry) => dispatch(createEntry(entry))
+        getReminders: () => dispatch(getReminders()),
+        deleteReminder: (reminderId) => dispatch(deleteReminder(reminderId))
     }
 }
 

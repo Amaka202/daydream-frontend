@@ -14,9 +14,11 @@ function HomeHeader() {
 
     return (
         <div className="homeheader-container">
-            <div className="logo-div">
-                <img src={logo} alt="app-logo"/>
-            </div>
+            <Link to='/'>
+                <div className="logo-div">
+                    <img src={logo} alt="app-logo"/>
+                </div>
+            </Link>
             <div className="homeheader-nav">
                 <Link to="/entries" style={{color: '#252223', textDecoration: 'none', marginTop: '0.8rem'}}>ENTRIES</Link>
                 <Button className="primary-btn" onClick={redirectToLogin}>LOGIN</Button>

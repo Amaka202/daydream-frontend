@@ -15,9 +15,9 @@ function MakeEntryButton() {
     }
 
     return (
-        <div className="make-entry-btn">
-            <div className="empty-btn">
-                <Button shape="round" size='medium' onClick={showModal}>Create New</Button>
+        <div className="make-entry-btn page-padding">
+            <div className="">
+                <Button className="secondary-btn" onClick={showModal}>Create New</Button>
             </div>
             <PostEntry show={show} handleClose={hideModal}/>
 

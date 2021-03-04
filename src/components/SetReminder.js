@@ -1,14 +1,62 @@
-import React from 'react'
-import { Modal } from 'antd';
-import TextError from './TextError';
+import React, {useEffect, useState} from 'react';
+import {connect} from 'react-redux';
 import '../styles/postentry.css'
-import { DatePicker } from 'rsuite';
+import { Alert, DatePicker } from 'rsuite';
 import '../styles/reminders.css';
 import {Button} from 'rsuite';
+import {createReminder} from '../store/actions/remindersActions';
+import { useHistory } from 'react-router';
 
 
 
-function SetReminder(props) {
+function SetReminder({createReminder, time, reminderCreated}) {
+    const history = useHistory();
+    const [dateTime, setDateTime] = useState("");
+    const [reminder, setReminder] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = () => {
+        if(dateTime === ""){
+            Alert.error('Please choose a time', 5000)
+        } else if(reminder === ""){
+            Alert.error('please add a reminder', 5000)
+        }else{
+            setLoading(true)
+            console.log(dateTime, reminder);
+            const reminderData = {
+                date: dateTime,
+                reminder
+            }
+            createReminder(reminderData)
+        }
+    }
+
+    useEffect(() => {
+        if(!time){
+            return
+        }else{
+            setLoading(false)
+            if(reminderCreated.status === 'error'){
+                Alert.error('', 5000)
+            }else {
+                Alert.success('Nice! Expect an email reminder 30 minuites before time!', 5000)
+                history.push('./reminders')
+                window.location.reload();
+
+            }
+
+        }
+    }, [time, reminderCreated])
+
+    const handleDateChange = (userDate) => {
+        setDateTime(userDate.getTime())
+    }
+
+    const handleReminderChange = (e) => {
+        console.log(e.target.value);
+        setReminder(e.target.value);
+                  
+    }
 
     return (
         <div className="reminder-form-container page-padding">
@@ -20,6 +68,9 @@ function SetReminder(props) {
                         <span className='required-star'> *</span>
                     </label>
                     <DatePicker
+                        oneTap
+                        onChange={(userDate) => handleDateChange(userDate)}
+                        placeholder="Select Date/Time"
                         format="YYYY-MM-DD HH:mm"
                         ranges={[
                         {
@@ -36,11 +87,12 @@ function SetReminder(props) {
                     <textarea 
                         type='text'
                         placeholder='reminder'
-
+                        value={reminder}
+                        onChange={handleReminderChange}
                     />
                 </div>
                 <div className="">
-                        <Button className="secondary-btn">Create New</Button>
+                        <Button className="secondary-btn" onClick={handleSubmit} loading={loading}>Create New</Button>
                  </div>
             </form>
             </div>
@@ -48,4 +100,18 @@ function SetReminder(props) {
     )
 }
 
-export default SetReminder;
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        reminderCreated: state.reminders,
+        time: state.reminders.time
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createReminder: (reminderData) => dispatch(createReminder(reminderData))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SetReminder);

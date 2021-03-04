@@ -27,7 +27,9 @@ const entriesReducer = (state = iniState, action) => {
             console.log('login error');  
             return {
                 ...state,
-                authStatus: 'error',
+                postStatus: 'error',
+                time: action.time
+
              }
 
          case 'EDIT ENTRY SUCCESS':

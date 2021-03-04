@@ -1,4 +1,4 @@
 export const getToken = () => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('dayDreamToken')
     return token;
 }

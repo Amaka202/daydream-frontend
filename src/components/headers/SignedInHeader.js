@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import { Button, Drawer, IconButton, Icon, Nav } from 'rsuite';
+import { Drawer } from 'antd';
+import { Button, IconButton, Icon, Nav } from 'rsuite';
 import {NavLink, useHistory, Link} from 'react-router-dom';
 import logo from '../../img/logo (1).png';
 import '../../styles/signedInHeader.css'
@@ -51,9 +52,9 @@ function SignedInHeader({resetEntriesState, resetAuthState, resetRemindersState}
                     <Drawer
                     size={'xs'}
                     placement={'right'}
-                    show={openMobileDrawer}
+                    visible={openMobileDrawer}
                     className="drawer"
-                    onHide={() => setOpenMobileDrawer(false)}>
+                    onClose={() => setOpenMobileDrawer(false)}>
                         <div className="navlinks">
                             <NavLink to="/entries" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Entries</NavLink>         
                             <NavLink to="/entry" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Create Entry</NavLink>         

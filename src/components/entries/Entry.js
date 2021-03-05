@@ -19,7 +19,6 @@ dayjs.extend(localizedFormat)
 
 
 function Entry({entries, time, match, id, deleteEntry}) {
-    // window.location.reload(false);
 
     const history = useHistory();
     const [show, setShow] = useState(false);
@@ -136,7 +135,7 @@ function Entry({entries, time, match, id, deleteEntry}) {
                         <div className="trash-icon">
                             <div style={{color: '#AEAEAE'}} onClick={showModal}>
                                 {element2}
-                            </div>
+                             </div>
                             <Popconfirm
                                 title="Are you sure to delete this entry?"
                                 onConfirm={() => handleDelete(entryId)}

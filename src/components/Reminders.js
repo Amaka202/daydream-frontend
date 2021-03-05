@@ -12,12 +12,13 @@ import { Button, Divider } from 'rsuite';
 import { Calendar } from 'antd';
 import {deleteReminder} from '../store/actions/remindersActions';
 import '../styles/reminders.css';
+import {resetRemindersState} from '../store/actions/resetStateAction';
 
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
 
-function Reminders({getReminders, time, reminders, deleteReminder}) {
+function Reminders({getReminders, time, reminders, deleteReminder, resetRemindersState}) {
      const history = useHistory();
 
      const redirectToSetReminders = () => {
@@ -37,6 +38,7 @@ function Reminders({getReminders, time, reminders, deleteReminder}) {
       const handleDelete = (reminderId) => {
           console.log(reminderId);
         deleteReminder(reminderId);
+        // resetRemindersState();
         history.push('/reminders')
         window.location.reload();
 
@@ -117,7 +119,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         getReminders: () => dispatch(getReminders()),
-        deleteReminder: (reminderId) => dispatch(deleteReminder(reminderId))
+        deleteReminder: (reminderId) => dispatch(deleteReminder(reminderId)),
+        resetRemindersState: () => dispatch(resetRemindersState())
     }
 }
 

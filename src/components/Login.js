@@ -9,12 +9,13 @@ import TextError from './TextError'
 import {connect} from 'react-redux';
 import LoginPic from '../img/login.png';
 import {loginUser} from '../store/actions/authActions';
+import {resetAuthState} from '../store/actions/resetStateAction';
 import {saveToken} from './helpers/saveToken';
 
 function Login(props) {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-  const {loginUser, status, time} = props
+  const {loginUser, status, time, resetAuthState} = props
   const initialValues = {
     email: "",
     password: ""
@@ -30,7 +31,8 @@ function Login(props) {
     }else{
         setLoading(false);
         if(status.status === 'error'){
-            Alert.error(status.message, 5000)
+          Alert.error(status.message, 3000)
+          resetAuthState()
         }else{
             Alert.success(status.message, 5000)
             saveToken(status.token)
@@ -108,7 +110,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginUser: (userData) => dispatch(loginUser(userData))
+    loginUser: (userData) => dispatch(loginUser(userData)),
+    resetAuthState: () => dispatch(resetAuthState())
+
   }
 }
 

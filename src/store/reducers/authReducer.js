@@ -1,6 +1,8 @@
+import {RESET_AUTH_STATE} from '../actions/resetStateAction';
+
 const iniState = {
     status: 'notAuth'
-}
+} 
 
 const authReducer = (state = iniState, action) => {
     switch (action.type) {
@@ -30,7 +32,12 @@ const authReducer = (state = iniState, action) => {
             return {
                 ...state,
                 authStatus: 'error',
-             }     
+             }
+        case 'RESET_AUTH_STATE':
+           console.log('login error');  
+           return {
+               state
+            }          
          
         default:
             return state;

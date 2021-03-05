@@ -6,10 +6,11 @@ import '../styles/reminders.css';
 import {Button} from 'rsuite';
 import {createReminder} from '../store/actions/remindersActions';
 import { useHistory } from 'react-router';
+import {resetRemindersState} from '../store/actions/resetStateAction';
 
 
 
-function SetReminder({createReminder, time, reminderCreated}) {
+function SetReminder({createReminder, time, reminderCreated, resetRemindersState}) {
     const history = useHistory();
     const [dateTime, setDateTime] = useState("");
     const [reminder, setReminder] = useState("");
@@ -38,11 +39,11 @@ function SetReminder({createReminder, time, reminderCreated}) {
             setLoading(false)
             if(reminderCreated.status === 'error'){
                 Alert.error('', 5000)
+                resetRemindersState()
             }else {
                 Alert.success('Nice! Expect an email reminder 30 minuites before time!', 5000)
                 history.push('./reminders')
-                window.location.reload();
-
+                resetRemindersState()
             }
 
         }
@@ -110,7 +111,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createReminder: (reminderData) => dispatch(createReminder(reminderData))
+        createReminder: (reminderData) => dispatch(createReminder(reminderData)),
+        resetRemindersState: () => dispatch(resetRemindersState())
+
     }
 }
 

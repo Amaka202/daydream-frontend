@@ -26,4 +26,8 @@
         display: block;
         padding: 2rem;
     }
+
+    .display-entries{
+        width: 100%;
+    }
 }

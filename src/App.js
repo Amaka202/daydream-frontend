@@ -20,7 +20,7 @@ function App() {
           <Route path='/signup' exact component={SignUp} />
           <Route path='/login' exact component={Login} />
           <ProtectedRoute path='/entries' exact component={DisplayEntries} />
-          {/* <Route path='/entries/:id' exact component={Entry} /> */}
+          <Route path='/entries/:id' exact component={Entry} />
           <ProtectedRoute path='/postentry' exact component={PostEntry} />
           <ProtectedRoute path='/reminders' exact component={Reminders} />
           <ProtectedRoute path='/createreminder' exact component={SetReminder} />

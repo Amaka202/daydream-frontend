@@ -1,5 +1,4 @@
-import { logDOM } from "@testing-library/react";
-
+import { RESET_REMINDERS_STATE} from '../actions/resetStateAction';
 const iniState = {}
 
 const reminderReducer = (state = iniState, action) => {
@@ -45,6 +44,12 @@ const reminderReducer = (state = iniState, action) => {
                 ...state,
                 authStatus: 'error',
              } 
+
+        case 'RESET_REMINDERS_STATE':
+            return {
+                state
+             }              
+
         default:
             return state;
     }

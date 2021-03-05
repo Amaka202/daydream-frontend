@@ -31,7 +31,7 @@
     padding: 1em;
     border-radius: 5px;
     width: 33vw;
-    height: 100vh;
+    /* height: 60vh; */
 }
 
 .entry-title{
@@ -88,4 +88,24 @@
 .make-entry-btn{
     /* text-align: center; */
     /* margin: 2rem; */
+}
+
+
+@media only screen and (max-width: 700px){
+    .entries-section{
+        width: 100%;
+    }
+
+    .entries-entry-section{
+        flex-direction: column;
+    }
+
+    .entry-section{
+        margin: auto;
+        background-color: white;
+        padding: 2em;
+        border-radius: 5px;
+        width: 100vw;
+        /* height: 60vh; */
+    }
 }

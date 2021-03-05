@@ -11,12 +11,14 @@ import TextError from './TextError';
 import SignUpHeader from './headers/SignUpHeader';
 import signupPic from '../img/create-account.png';
 import {createUser} from '../store/actions/authActions';
+import {resetAuthState} from '../store/actions/resetStateAction';
+
 import {saveToken} from './helpers/saveToken';
 
 function Signup(props) {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
-    const {createUser, status, time} = props
+    const {createUser, status, time, resetAuthState} = props
     console.log(props);
   const initialValues = {
     firstname: "",
@@ -44,6 +46,7 @@ function Signup(props) {
         setLoading(false);
         if(status.status === 'error'){
             Alert.error(status.message, 5000)
+            resetAuthState()
         }else{
             Alert.success(status.message, 5000)
             saveToken(status.token)
@@ -151,7 +154,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createUser: (userData) => dispatch(createUser(userData))
+        createUser: (userData) => dispatch(createUser(userData)),
+        resetAuthState: () => dispatch(resetAuthState())
+
     }
 }
 

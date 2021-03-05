@@ -1,17 +1,22 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import {connect} from 'react-redux';
 import { Button, Drawer, IconButton, Icon, Nav } from 'rsuite';
 import {NavLink, useHistory, Link} from 'react-router-dom';
 import logo from '../../img/logo (1).png';
 import '../../styles/signedInHeader.css'
 import currentWindowWidth from '../helpers/getCurrentWidth.js';
+import {resetAuthState, resetEntriesState,  resetRemindersState} from '../../store/actions/resetStateAction';
 
-function SignedInHeader() {
+
+function SignedInHeader({resetEntriesState, resetAuthState, resetRemindersState}) {
     const history = useHistory();
     const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
 
     const redirectToLogin = () => {
         localStorage.removeItem('dayDreamToken');
-
+        resetAuthState()
+        resetEntriesState()
+        resetRemindersState()
         history.push('/login')
     }
     return (
@@ -64,4 +69,14 @@ function SignedInHeader() {
     )
 }
 
-export default SignedInHeader
+const mapDispatchToProps = (dispatch) => {
+    return {
+        resetRemindersState: () => dispatch(resetRemindersState()),
+        resetAuthState: () => dispatch(resetAuthState()),
+        resetEntriesState: () => dispatch(resetEntriesState())
+
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignedInHeader);
+

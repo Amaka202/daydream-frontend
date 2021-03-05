@@ -24,12 +24,15 @@ function EntryCalender({reminders, time, getReminders}) {
                 <Calendar fullscreen={false} onPanelChange={onPanelChange} />
             </div>
             <div  className="upcoming-reminder">
-                {reminders &&
+                {reminders && reminders.length > 0
+                ?
                 (<div>
                     <h5>Upcoming Reminder</h5>
                     <p className="entry-date" style={{marginTop:'1rem'}}>{reminders[0].date}</p>
                     <p>{reminders[0].reminder}</p>
                 </div>)
+                :
+                <h3>No Reminders yet...</h3>
                 }
                 <div style={{marginTop: '1rem'}}>
                     <Link to="/reminders" style={{paddingTop: '3rem', fontSize: '0.9em'}}>View all...</Link>

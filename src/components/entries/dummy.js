@@ -10,7 +10,6 @@ import EmptyEntries from './EmptyEntries';
 import {getEntries} from '../../store/actions/entriesActions';
 import MyLoader from '../MyLoader';
 import Entry from './Entry';
-import { DesktopViewEntries, mobileViewEntries } from '../helpers/mappingEntriesFunction';
 
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
@@ -22,42 +21,36 @@ function Entries({entries, time, getEntries}) {
         getEntries()
     }, [ time])
 
-    const mappedDesktopEntries = DesktopViewEntries(entries, arrow, Link, dayjs)
-    const mappedMobileEntries = mobileViewEntries(entries, arrow, Link, dayjs)
-
-    if(currentWindowWidth()[0] > 700){
+    const mappedEntries = entries && entries.map((val) => {
         return (
-            <div>
-                { entries && entries.length > 0 
-                ?
-                <div className="entries-entry-section">
-                    <div className="flexed-item">
-                        <h5 className="page-title">Enteries</h5>
-                          {mappedDesktopEntries}                                     
-                    </div> 
-                    <div className="flexed-item">
-                        <Entry id={querry.get('id')} />
-                    </div>
-                </div>
-                :
-                <div>
-                    <EmptyEntries />
-                </div>
-            }
-            </div>
-            
-            
+            <section key={val.id}>
+                <Link to={`/entries/?id=${val.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <section className="entries-section">
+                        <div>
+                            <p className="entry-date">{dayjs(val.date).format('ll')}</p>
+                            <p className="entry-title">{val.title}</p>
+                        </div>
+                        <div className="arrow-div">
+                            <img src={arrow} alt="arrow-left"/>        
+                        </div>
+                    </section>   
+                </Link>
+            </section> 
         )
-    }else{
-        return (
-            <div>
+    })
+
+    return (
+        <div>
             { entries && entries.length > 0 
             ?
             <div className="entries-entry-section">
-                <div className="">
+                <div className="flexed-item">
                     <h5 className="page-title">Enteries</h5>
-                      {mappedMobileEntries}                                     
+                      {mappedEntries}                                     
                 </div> 
+                <div className="flexed-item">
+                    <Entry id={querry.get('id')} />
+                </div>
             </div>
             :
             <div>
@@ -65,11 +58,9 @@ function Entries({entries, time, getEntries}) {
             </div>
         }
         </div>
-
-        )
-    }
-
-  
+        
+        
+    )
 }
 
 const mapStateToProps = (state) => {

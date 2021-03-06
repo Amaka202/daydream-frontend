@@ -1,5 +1,5 @@
 import {getToken} from '../../components/helpers/getToken';
-const reminderApiUrl = 'http://localhost:8000/api/v1/reminders'
+const reminderApiUrl = 'http://https://radiant-dusk-52143.herokuapp.com/api/v1/reminders'
 
 export const getReminders = () => {
     return (dispatch, getState) => {
@@ -60,7 +60,7 @@ export const createReminder = (redminderData) => {
 }
 
 export const deleteReminder = (reminderId) => {
-    const deleteEntryApiUrl = `http://localhost:8000/api/v1/reminders/${reminderId}/delete`
+    const deleteEntryApiUrl = `http://https://radiant-dusk-52143.herokuapp.com/api/v1/reminders/${reminderId}/delete`
     return (dispatch, getState) => {
         fetch(deleteEntryApiUrl, {
             method: 'DELETE',

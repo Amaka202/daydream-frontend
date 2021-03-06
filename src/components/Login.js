@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import { Alert } from 'rsuite';
 import SignInHeader from './headers/SignInHeader'
 import '../styles/signup.css';
+import { Button } from 'rsuite';
+
 import {useHistory} from 'react-router-dom';
 import TextError from './TextError'
 import {connect} from 'react-redux';
@@ -21,6 +23,7 @@ function Login(props) {
     password: ""
   }
   const onSubmit = values => {
+    setLoading(true)
     console.log("form values", values)
     loginUser(values)
   }
@@ -89,7 +92,7 @@ function Login(props) {
                 <ErrorMessage name="password" component={TextError}/>
                 </div>       
                 <div className="signup-btn-div">
-                    <button type="submit" className="primary-btn" >Submit</button>
+                    <Button type="submit" className="primary-btn" loading={loading}>Submit</Button>
                 </div>
             </Form>
             </Formik>

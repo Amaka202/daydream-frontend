@@ -1,6 +1,6 @@
 import {getToken} from '../../components/helpers/getToken';
-const entriesApiUrl = 'http://localhost:8000/api/v1/entries'
-const deleteEntryApiUrl = 'http://localhost:8000/api/v1/entries/:entryId/delete'
+const entriesApiUrl = 'https://radiant-dusk-52143.herokuapp.com/api/v1/entries'
+const deleteEntryApiUrl = 'http://https://radiant-dusk-52143.herokuapp.com/api/v1/entries/:entryId/delete'
 export const getEntries = () => {
     return (dispatch, getState) => {
         fetch(entriesApiUrl, {
@@ -59,7 +59,7 @@ export const createEntry = (entryData) => {
 }
 
 export const editEntry = (entryId, entryToUpdate) => {
-    const editEntryApiUrl = `http://localhost:8000/api/v1/entries/${entryId}/edit`
+    const editEntryApiUrl = `http://https://radiant-dusk-52143.herokuapp.com/api/v1/entries/${entryId}/edit`
     return (dispatch, getState) => {
         console.log('i am here');
         fetch(editEntryApiUrl, {
@@ -90,7 +90,7 @@ export const editEntry = (entryId, entryToUpdate) => {
 }
 
 export const deleteEntry = (entryId) => {
-    const deleteEntryApiUrl = `http://localhost:8000/api/v1/entries/${entryId}/delete`
+    const deleteEntryApiUrl = `http://https://radiant-dusk-52143.herokuapp.com/api/v1/entries/${entryId}/delete`
     return (dispatch, getState) => {
         fetch(deleteEntryApiUrl, {
             method: 'DELETE',

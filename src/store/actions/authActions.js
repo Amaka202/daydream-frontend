@@ -1,5 +1,5 @@
-const signUpApiUrl = 'http://localhost:8000/api/v1/signup'
-const loginApiUrl = 'http://localhost:8000/api/v1/login'
+const signUpApiUrl = 'https://radiant-dusk-52143.herokuapp.com/api/v1/signup'
+const loginApiUrl = 'https://radiant-dusk-52143.herokuapp.com/api/v1/login'
 
 export const createUser = (userData) => {
     return (dispatch, getState) => {

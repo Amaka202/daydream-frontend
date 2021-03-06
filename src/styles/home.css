@@ -74,6 +74,13 @@
     margin: 4rem 0;
 }
 
+.desc-item img{
+    width: 25rem;
+    height: 25rem;
+    display: block;
+    margin: auto;
+}
+
 .desc-write-up{
     margin: auto;
     padding: 2%;
@@ -176,7 +183,7 @@ text-align: center;
 
     .desc-item img{
         width: 15rem;
-        height: auto;
+        height: 15rem;
         display: block;
         margin: auto;
     }

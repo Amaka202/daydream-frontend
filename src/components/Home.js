@@ -9,7 +9,7 @@ import mobileMockup from '../img/phone-mock-up.png';
 import quotesopen from '../img/quotes-open.png';
 import quotesclose from '../img/quotes-close.png';
 import forWritters from '../img/for-writers.png'
-import forMultitask from '../img/for-everyone.png'
+import forMultitask from '../img/multi-real.png'
 import forEveryone from '../img/for-multitaskers.png'
 import tooTired from '../img/too-tired.png'
 import twiterLogo from '../img/twitter.png'
@@ -37,9 +37,9 @@ function Home() {
                             <h2>The <span style={{color: 'rgba(255, 2, 2, 0.8)'}}>most</span> trusted</h2>
                             <h2> online private journal </h2>
                             <h2>and reminder app</h2>
-                            <p>Write private online journals securely  </p>
-                            <p>and anonymously or public journals to share</p>
-                            <p> and get connected with other journal writers.</p>
+                            <p>Write journals online  securely  </p>
+                            <p>login, make an entry, retrieve any time</p>
+                            <p> set and get email reminder on upcoming tasks.</p>
                         </div>
                         <div className="hero-img-div flex-item">
                         <img src={heroPic} alt="hero-pic"/>
@@ -75,14 +75,10 @@ function Home() {
                     <section className="flexed desc-item">
                         <div className="flex-item desc-write-up">
                             <h4>For Writers</h4>
-                            <p>Writing out your thoughts and feelings gets better
-                                with like-minded people around you. Goodnight 
-                                Journal connects journal writers like you together so
-                                you can share your thoughts and your life stories
-                                with others</p>
-                        </div>
+                            <p>Write out your thoughts, ideas and feelings anytime as they come. Login into your account from any device to access your entries, safely, securely, privately,  </p>
+                        </div> 
                         <div className="flex-item">
-                            <img src={forWritters} alt="writer"/>
+                            <img src={forEveryone} alt="writer"/>
                         </div>
                     </section>
                     <section className="reverse-flexed desc-item">
@@ -90,40 +86,20 @@ function Home() {
                             <img src={forMultitask} alt="writer"/>
                     </div>
                         <div className="flex-item desc-write-up">
-                            <h4>For Writers</h4>
-                            <p>Writing out your thoughts and feelings gets better
-                                with like-minded people around you. Goodnight 
-                                Journal connects journal writers like you together so
-                                you can share your thoughts and your life stories
-                                with others</p>
+                            <h4>For Multi-tasker</h4>
+                            <p>Dont worry about forgetting a task or an event, don't depend solely on phone reminders. Set reminders on here and get emails I hour before time. From any device, anywhere! </p>
                         </div>
                     </section>
                     <section className="flexed desc-item">
                         <div className="flex-item desc-write-up">
-                            <h4>For Writers</h4>
-                            <p>Writing out your thoughts and feelings gets better
-                                with like-minded people around you. Goodnight 
-                                Journal connects journal writers like you together so
-                                you can share your thoughts and your life stories
-                                with others</p>
+                            <h4>For Everyone</h4>
+                            <p>This app is indeed for anyone who has a need of securely and privately diaries, No other person has access but you! Intuitive, user friendly, no unwanted emails all for free!</p>
                         </div>
                         <div className="flex-item">
-                            <img src={forEveryone} alt="writer"/>
+                            <img src={forWritters} alt="writer"/>
                         </div>
                     </section>
-                    <section className="reverse-flexed desc-item">
-                    <div className="flex-item">
-                            <img src={tooTired} alt="writer"/>
-                        </div>
-                        <div className="flex-item desc-write-up">
-                            <h4>For Writers</h4>
-                            <p>Writing out your thoughts and feelings gets better
-                                with like-minded people around you. Goodnight 
-                                Journal connects journal writers like you together so
-                                you can share your thoughts and your life stories
-                                with others</p>
-                        </div>
-                    </section>
+
                 </section>
                 <section className="spiral-section">
                     <img src={spiral} alt="spiral"/>
@@ -159,25 +135,10 @@ function Home() {
                                     <img src={twiterLogo} alt="twitter-logo" />
                                 </div>
                             </div>
-                            <p className="" style={{color: '#555D61', marginTop: '1rem'}}><span style={{color: '#2AA4EF'}}>@daydream</span> is the best productivity app I have. So on point!</p>
+                            <p className="" style={{color: '#555D61', marginTop: '1rem'}}> I love <span style={{color: '#2AA4EF'}}>@daydream</span> so much. I dont have to bother about anyone going to read my diary</p>
                         </div>
                     </div>
                     <div className="flexed">
-                        <div className="flex-item tweet">
-                            <div className="testimonial-body">
-                                <div className="testimonial-body dp-div">
-                                    <img src={drake} alt="twiter-dp"/>
-                                    <div>
-                                        <p style={{fontWeight: 'bold'}}>Drake</p>
-                                        <p style={{color: '#BBBCBD'}}>@drake</p>
-                                    </div>
-                                </div>
-                                <div className="twitter-logo-div">
-                                    <img src={twiterLogo} alt="twitter-logo" />
-                                </div>
-                            </div>
-                            <p className="" style={{color: '#555D61', marginTop: '1rem'}}><span style={{color: '#2AA4EF'}}>@daydream</span> is the best productivity app I have. So on point!</p>
-                        </div>
                         <div className="flex-item tweet">
                             <div className="testimonial-body">
                                 <div className="testimonial-body dp-div">
@@ -191,7 +152,22 @@ function Home() {
                                     <img src={twiterLogo} alt="twitter-logo" />
                                 </div>
                             </div>
-                            <p className="" style={{color: '#555D61', marginTop: '1rem'}}><span style={{color: '#2AA4EF'}}>@daydream</span> is the best productivity app I have. So on point!</p>
+                            <p className="" style={{color: '#555D61', marginTop: '1rem'}}><span style={{color: '#2AA4EF'}}>@daydream</span> is like the best guys! the email reminders are so on point</p>
+                        </div>
+                        <div className="flex-item tweet">
+                            <div className="testimonial-body">
+                                <div className="testimonial-body dp-div">
+                                    <img src={drake} alt="twiter-dp"/>
+                                    <div>
+                                        <p style={{fontWeight: 'bold'}}>Drake</p>
+                                        <p style={{color: '#BBBCBD'}}>@drake</p>
+                                    </div>
+                                </div>
+                                <div className="twitter-logo-div">
+                                    <img src={twiterLogo} alt="twitter-logo" />
+                                </div>
+                            </div>
+                            <p className="" style={{color: '#555D61', marginTop: '1rem'}}> Highlight of my day is logging into my <span style={{color: '#2AA4EF'}}>@daydream</span> account to record music lines as they come. </p>
                         </div>
                     </div>
                 </section>

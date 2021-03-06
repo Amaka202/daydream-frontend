@@ -9,7 +9,7 @@ import MyFooter from './MyFooter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Button, Divider } from 'rsuite';
-import { Calendar } from 'antd';
+import { Calendar, Empty } from 'antd';
 import {deleteReminder} from '../store/actions/remindersActions';
 import '../styles/reminders.css';
 import {resetRemindersState} from '../store/actions/resetStateAction';
@@ -67,7 +67,9 @@ function Reminders({getReminders, time, reminders, deleteReminder, resetReminder
                 </div>
                 <section className="reminder-body flexed">
                     <div className="flex-item">
-                        {reminders && reminders.map((val) => {
+                        {reminders && reminders.length > 0 
+                            ?
+                            reminders.map((val) => {
                             return (
                                 <div key={val.id}>
                                     {/* <Divider /> */}
@@ -94,7 +96,23 @@ function Reminders({getReminders, time, reminders, deleteReminder, resetReminder
                                     <Divider />
                                 </div>
                             )
-                        })}
+                        })
+                        :
+                        <div style={{marginBottom: '2rem'}}>
+                            <Empty
+                                imageStyle={{
+                                height: 60,
+                                }}
+                                description={
+                                <span className="empty-text">
+                                    Go ahead and record a reminder! <br />
+                                </span>
+                                }
+                                 >
+                                    </Empty>
+                        </div>
+                    
+                    }
                     </div>
                     <section className="flex-item reminder-calender">
                         <Calendar fullscreen={false} onPanelChange={onPanelChange} />

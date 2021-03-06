@@ -11,6 +11,7 @@ import {getEntries} from '../../store/actions/entriesActions';
 import MyLoader from '../MyLoader';
 import Entry from './Entry';
 import { DesktopViewEntries, mobileViewEntries } from '../helpers/mappingEntriesFunction';
+import MakeEntryButton from '../MakeEntryButton';
 
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
@@ -28,9 +29,14 @@ function Entries({entries, time, getEntries}) {
     if(currentWindowWidth()[0] > 700){
         return (
             <div>
+                
                 { entries && entries.length > 0 
                 ?
-                <div className="entries-entry-section">
+                <div>
+                    <div>
+                        <MakeEntryButton />
+                    </div>
+                    <div className="entries-entry-section">
                     <div className="flexed-item">
                         <h5 className="page-title">Enteries</h5>
                           {mappedDesktopEntries}                                     
@@ -38,7 +44,9 @@ function Entries({entries, time, getEntries}) {
                     <div className="flexed-item">
                         <Entry id={querry.get('id')} />
                     </div>
+                    </div>
                 </div>
+
                 :
                 <div>
                     <EmptyEntries />
@@ -53,11 +61,16 @@ function Entries({entries, time, getEntries}) {
             <div>
             { entries && entries.length > 0 
             ?
-            <div className="entries-entry-section">
+            <div>
+                <div>
+                        <MakeEntryButton />
+                </div>
+                <div className="entries-entry-section">
                 <div className="">
                     <h5 className="page-title">Enteries</h5>
                       {mappedMobileEntries}                                     
                 </div> 
+            </div>
             </div>
             :
             <div>

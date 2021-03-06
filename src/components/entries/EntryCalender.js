@@ -32,7 +32,7 @@ function EntryCalender({reminders, time, getReminders}) {
                     <p>{reminders[0].reminder}</p>
                 </div>)
                 :
-                <h3>No Reminders yet...</h3>
+                <h6>No Reminders yet...</h6>
                 }
                 <div style={{marginTop: '1rem'}}>
                     <Link to="/reminders" style={{paddingTop: '3rem', fontSize: '0.9em'}}>View all...</Link>

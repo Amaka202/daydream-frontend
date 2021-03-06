@@ -19,9 +19,7 @@ function DisplayEnteries({entries}) {
             {currentWindowWidth()[0] > 700 
             ? 
                 <div>
-                    <div>
-                        <MakeEntryButton />
-                    </div>
+                    
                     <section className="display-entries-section page-padding">
                     <section className="display-entries">
                         <Entries />

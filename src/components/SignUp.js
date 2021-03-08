@@ -18,8 +18,7 @@ import {saveToken} from './helpers/saveToken';
 function Signup(props) {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
-    const {createUser, status, time, resetAuthState} = props
-    console.log(props);
+    const {createUser, status, time, resetAuthState, serverError} = props
   const initialValues = {
     firstname: "",
     lastname:"",
@@ -29,7 +28,6 @@ function Signup(props) {
   
   const onSubmit = (values, submitProps) => {
     setLoading(true)
-    console.log(props);
     createUser(values)
 
     // if(status){
@@ -44,6 +42,10 @@ function Signup(props) {
         return;
     }else{
         setLoading(false);
+        if(serverError){
+            Alert.error('server error', 5000)
+            resetAuthState()
+        }else
         if(status.status === 'error'){
             Alert.error(status.message, 5000)
             resetAuthState()
@@ -145,10 +147,10 @@ function Signup(props) {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         status: state.auth.data,
         time: state.auth.time,
+        serverError: state.auth.serverError
     }
 }
 

@@ -86,14 +86,14 @@ function Home() {
                             <img src={forMultitask} alt="writer"/>
                     </div>
                         <div className="flex-item desc-write-up">
-                            <h4>For Multi-tasker</h4>
-                            <p>Dont worry about forgetting a task or an event, don't depend solely on phone reminders. Set reminders on here and get emails I hour before time. From any device, anywhere! </p>
+                            <h4>For Multi-taskers</h4>
+                            <p>Dont worry about forgetting a task or an event, don't depend solely on phone reminders. Set reminders on here and get emails one hour before time. From any device, anywhere! </p>
                         </div>
                     </section>
                     <section className="flexed desc-item">
                         <div className="flex-item desc-write-up">
                             <h4>For Everyone</h4>
-                            <p>This app is indeed for anyone who has a need of securely and privately diaries, No other person has access but you! Intuitive, user friendly, no unwanted emails all for free!</p>
+                            <p>This app is indeed for anyone who has a need of securely and privately keeping diaries, No other person has access but you! Intuitive, user friendly, no unwanted emails all for free!</p>
                         </div>
                         <div className="flex-item">
                             <img src={forWritters} alt="writer"/>

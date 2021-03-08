@@ -17,7 +17,9 @@ const authReducer = (state = iniState, action) => {
             console.log('signup error');  
             return {
                 ...state,
-                authStatus: 'error',
+                serverError: 'server error',
+                time: action.time
+
              } 
          case 'LOGIN USER SUCCESS':
             console.log('login success');  

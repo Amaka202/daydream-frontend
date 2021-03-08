@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
     "antd": "^4.12.3",
+    "axios": "^0.21.1",
     "core-js": "^3.9.0",
     "dayjs": "^1.10.4",
     "formik": "^2.2.6",

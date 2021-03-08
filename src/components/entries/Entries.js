@@ -71,7 +71,7 @@ function Entries({entries, time, getEntries}) {
                       {mappedMobileEntries}                                     
                 </div> 
             </div>
-            </div>
+            </div> 
             :
             <div>
                 <EmptyEntries />

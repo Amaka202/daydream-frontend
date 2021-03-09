@@ -18,7 +18,7 @@ dayjs.extend(localizedFormat)
 
 function Entries({entries, time, getEntries}) {
     let querry = useQuerry();
-    const [entriesLoading, setEntriesLoading] = useState(true);
+    // const [entriesLoading, setEntriesLoading] = useState(true);
 
 
     useEffect(() => {

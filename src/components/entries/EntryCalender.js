@@ -14,9 +14,6 @@ function EntryCalender({reminders, time, getReminders}) {
         getReminders()
     }, [time])
 
-    //   const latestReminder = reminders && reminders[0]
-      reminders && console.log(reminders[0]);
-      reminders && console.log(reminders);
     return (
         <div className="entry-calender">
             <h5 className="page-title">Reminders</h5>
@@ -44,7 +41,6 @@ function EntryCalender({reminders, time, getReminders}) {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.reminders);
     return {
         reminders: state.reminders.reminderData,
         time: state.reminders.time

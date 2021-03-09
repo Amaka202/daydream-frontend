@@ -36,7 +36,7 @@ const reminderReducer = (state = iniState, action) => {
             console.log('delete success');  
             return {
                 ...state,
-                timeDeleted: action.deleteTime,
+                timeReminderDeleted: action.deleteTime,
             }
         case 'DELETE REMINDER ERROR':
             console.log('delete error');  

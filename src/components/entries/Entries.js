@@ -18,13 +18,27 @@ dayjs.extend(localizedFormat)
 
 function Entries({entries, time, getEntries}) {
     let querry = useQuerry();
+    const [entriesLoading, setEntriesLoading] = useState(true);
+
 
     useEffect(() => {
         getEntries()
+
     }, [ time])
+
+    // useEffect(() => {
+    //     if(entries){
+    //         setEntriesLoading(false)
+    //     }
+    // })
 
     const mappedDesktopEntries = DesktopViewEntries(entries, arrow, Link, dayjs)
     const mappedMobileEntries = mobileViewEntries(entries, arrow, Link, dayjs)
+
+    if(entriesLoading){
+        return <MyLoader/>
+    }
+
 
     if(currentWindowWidth()[0] > 700){
         return (

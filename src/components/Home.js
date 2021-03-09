@@ -175,8 +175,8 @@ function Home() {
                     <img src={spiral} alt="spiral"/>
                 </section>
                 <section className="join-section page-padding">
-                    <p>JOIN NOW AND START USING THIS AWESOME WEBSITE</p>
-                    <p>FOR FREE!</p>
+                    <p>JOIN NOW AND START USING THIS AWESOME </p>
+                    <p>WEBSITE FOR FREE!</p>
                     <Button className="primary-btn" onClick={redirectToSignUp}>GET STARTED</Button>
                 </section>
             </section>
@@ -187,4 +187,4 @@ function Home() {
     )
 }
 
-export default Home
+export default Home;

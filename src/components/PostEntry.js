@@ -8,15 +8,13 @@ import TextError from './TextError';
 import '../styles/postentry.css'
 import {Button} from 'rsuite';
 import {createEntry} from '../store/actions/entriesActions';
+import {resetEntriesState} from '../store/actions/resetStateAction';
 
 
 function PostEntry(props) {
     
   const [loading, setLoading] = useState(false);
-    // const [open, setOpen] = useState(false);
-
-    // const [loading, setLoading] = useState();
-    const {handleClose, show, createEntry, status, time, posterror} = props;
+    const {handleClose, show, createEntry, status, time, posterror, resetEntriesState} = props;
 
     const initialValues = {
         title: "",
@@ -28,7 +26,6 @@ function PostEntry(props) {
       const onSubmit = (values, submitProps) => {
         setLoading(true)
         createEntry(values)
-        // console.log("form valu.e", values)
       } 
 
       useEffect(() => {
@@ -37,12 +34,15 @@ function PostEntry(props) {
         }else{
             setLoading(false);
             if(posterror) {
-              Alert.error('error creating post', 5000)
+              Alert.error('error creating post', 5000);
+              resetEntriesState();
             }else if(status.status === 'success'){
-              Alert.success(status.message, 5000)
+              // Alert.success(status.message, 5000);
+              resetEntriesState();
               handleClose();
             }else{
-                Alert.error(status.message, 5000)
+                Alert.error(status.message, 5000);
+                resetEntriesState();
                 handleClose();
             }
         }
@@ -142,18 +142,18 @@ function PostEntry(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
       status: state.entries.entryCreated,
       time: state.entries.time,
       posterror: state.entries.postStatus
-      // time: state.auth.time,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createEntry: (entryData) => dispatch(createEntry(entryData))
+    createEntry: (entryData) => dispatch(createEntry(entryData)),
+    resetEntriesState: () => dispatch(resetEntriesState())
+
   }
 }
 

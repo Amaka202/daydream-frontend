@@ -18,20 +18,31 @@ var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
 
-function Entry({entries, time, match, id, deleteEntry}) {
+function Entry({entries, time, match, id, deleteEntry, timeDeleted}) {
 
     const history = useHistory();
     const [show, setShow] = useState(false);
 
-    console.log(id);
+    // console.log(id);
     let entryId = match.params.id;
-    console.log(entryId);
+    // console.log(entryId);
     const element1 = <FontAwesomeIcon icon={faTrash} />
     const element2 = <FontAwesomeIcon icon={faEdit} />
+
+    const handleDelete = (id) => {
+        deleteEntry(id);
+    }
     
     useEffect(() => {
         getEntries()
     }, [ time])
+
+    useEffect(() => {
+        if(timeDeleted){
+            history.push('/entries')
+            window.location.reload();
+        }
+    }, [timeDeleted])
 
     const myFormatedDate = (date) => {
         return dayjs(date).format('ll')
@@ -41,14 +52,8 @@ function Entry({entries, time, match, id, deleteEntry}) {
     const mobileEntry = entries && entries.filter(val => val.id === entryId) 
     entries && console.log(entries);
     mobileEntry && console.log(mobileEntry);
-    const handleDelete = (id) => {
-        deleteEntry(id);
-        history.push('/entries')
-        window.location.reload();
 
-    }
-
-    const handlecancel = () => {
+    const handlecancel = () => { 
         return;
     }
 
@@ -161,6 +166,7 @@ const mapStateToProps = (state) => {
     return {
         entries: state.entries.entriesData,
       time: state.entries.time,
+      timeDeleted: state.entries.timeEntryDeleted
     }
   }
 

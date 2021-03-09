@@ -51,7 +51,7 @@ const entriesReducer = (state = iniState, action) => {
             console.log('delete success');  
             return {
                 ...state,
-                timeDeleted: action.deleteTime,
+                timeEntryDeleted: action.deleteTime,
             }
         case 'DELETE ENTRY ERROR':
             console.log('delete error');  

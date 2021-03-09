@@ -28,7 +28,6 @@ function PostEntry(props) {
       const onSubmit = (values, submitProps) => {
         setLoading(true)
         editEntry(entryId, values)
-        console.log("edited", values)
       } 
 
       useEffect(() => {
@@ -141,11 +140,9 @@ function PostEntry(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
       status: state.entries.editedData,
       time: state.entries.timeEdited,
-      // time: state.auth.time,
   }
 }
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import dayjs from 'dayjs';
@@ -13,12 +13,16 @@ import { Calendar, Empty } from 'antd';
 import {deleteReminder} from '../store/actions/remindersActions';
 import '../styles/reminders.css';
 import {resetRemindersState} from '../store/actions/resetStateAction';
+import MyLoader from './MyLoader';
 
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
 
-function Reminders({getReminders, time, reminders, deleteReminder, resetRemindersState}) {
+function Reminders({getReminders, timeFetched, reminders, deleteReminder, resetRemindersState, timeReminderDeleted}) {
+    const [deleteLoading, setdeleteLoading] = useState(false);
+    const [reminderLoading, setReminderLoading] = useState(true);
+
      const history = useHistory();
 
      const redirectToSetReminders = () => {
@@ -31,16 +35,17 @@ function Reminders({getReminders, time, reminders, deleteReminder, resetReminder
       }
 
       const handleDate = (d) => {
-          console.log(new Date(1614691963688).toLocaleString());
-          return new Date(d).toLocaleDateString();
+          console.log(d);
+          let date = new Date(d);
+          console.log(dayjs(new Date(1615292187061).toString()).format('ll'));
+          return date.toString()
+          dayjs(new Date(1615292187061).toString()).format('ll')
       }
 
       const handleDelete = (reminderId) => {
-          console.log(reminderId);
         deleteReminder(reminderId);
+        setdeleteLoading(true)
         // resetRemindersState();
-        history.push('/reminders')
-        window.location.reload();
 
     }
 
@@ -50,8 +55,29 @@ function Reminders({getReminders, time, reminders, deleteReminder, resetReminder
 
       useEffect(() => {
         getReminders()
-    }, [ time])
 
+    }, [ timeFetched])
+
+    useEffect(() => {
+        if(reminders){
+            setReminderLoading(false)
+        }
+    })
+
+    useEffect(() => {
+        if(timeReminderDeleted){
+            history.push('/reminders')
+            window.location.reload();
+        }
+    }, [timeReminderDeleted])
+
+    if(deleteLoading){
+        return <MyLoader/>
+    }
+
+    if(reminderLoading){
+        return <MyLoader/>
+    }
 
     return (
         <div>
@@ -72,9 +98,8 @@ function Reminders({getReminders, time, reminders, deleteReminder, resetReminder
                             reminders.map((val) => {
                             return (
                                 <div key={val.id}>
-                                    {/* <Divider /> */}
                                     <section className="reminder">
-                                        <p className="entry-date">{new Date(val.date).toLocaleString()}</p>
+                                        <p className="entry-date">{dayjs(handleDate((val.date))).format('ll')}</p>
                                         <p className="reminder-text">
                                             {val.reminder}  
                                         </p>
@@ -127,10 +152,11 @@ function Reminders({getReminders, time, reminders, deleteReminder, resetReminder
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.reminders);
     return {
         reminders: state.reminders.reminderData,
-        time: state.reminders.time
+        timeFetched : state.reminders.time,
+        timeReminderDeleted: state.reminders.timeReminderDeleted
+
     }
 }
  

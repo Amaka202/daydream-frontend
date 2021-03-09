@@ -30,9 +30,7 @@ function SignedInHeader({resetEntriesState, resetAuthState, resetRemindersState}
                     </div>
                     <div className="navlinks">
                         <NavLink to="/entries" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Entries</NavLink>         
-                        <NavLink to="/entry" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Create Entry</NavLink>         
                         <NavLink to="/reminders" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Reminders</NavLink>         
-                        <NavLink to="/reminder" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Create Reminder</NavLink>
                         <Button className="primary-btn navlinks-item" onClick={redirectToLogin}>LOGOUT</Button>
                     </div>         
                 </nav>
@@ -57,9 +55,7 @@ function SignedInHeader({resetEntriesState, resetAuthState, resetRemindersState}
                     onClose={() => setOpenMobileDrawer(false)}>
                         <div className="navlinks">
                             <NavLink to="/entries" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Entries</NavLink>         
-                            <NavLink to="/entry" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Create Entry</NavLink>         
                             <NavLink to="/reminders" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Reminders</NavLink>         
-                            <NavLink to="/reminder" activeClassName='active' style={{color: '#252223', textDecoration: 'none'}} className="navlinks-item">Create Reminder</NavLink>
                             <Button className="primary-btn navlinks-item" onClick={redirectToLogin}>LOGOUT</Button>
                         </div>
                     </Drawer>

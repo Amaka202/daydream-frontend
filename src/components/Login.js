@@ -24,7 +24,6 @@ function Login(props) {
   }
   const onSubmit = values => {
     setLoading(true)
-    console.log("form values", values)
     loginUser(values)
   }
 
@@ -104,7 +103,6 @@ function Login(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
       status: state.auth.data,
       time: state.auth.time,

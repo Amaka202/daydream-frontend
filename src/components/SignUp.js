@@ -29,13 +29,6 @@ function Signup(props) {
   const onSubmit = (values, submitProps) => {
     setLoading(true)
     createUser(values)
-
-    // if(status){
-    //     Alert.success('This is a successful message.', 5000)
-
-    // }
-  
-    // console.log("form value", values)
 }
     useEffect(() => {
     if(!time){

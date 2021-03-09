@@ -15,7 +15,7 @@ function SetReminder({createReminder, time, reminderCreated, resetRemindersState
     const [dateTime, setDateTime] = useState("");
     const [reminder, setReminder] = useState("");
     const [loading, setLoading] = useState(false);
-
+    
     const handleSubmit = () => {
         if(dateTime === ""){
             Alert.error('Please choose a time', 5000)
@@ -23,7 +23,6 @@ function SetReminder({createReminder, time, reminderCreated, resetRemindersState
             Alert.error('please add a reminder', 5000)
         }else{
             setLoading(true)
-            console.log(dateTime, reminder);
             const reminderData = {
                 date: dateTime,
                 reminder
@@ -54,9 +53,7 @@ function SetReminder({createReminder, time, reminderCreated, resetRemindersState
     }
 
     const handleReminderChange = (e) => {
-        console.log(e.target.value);
         setReminder(e.target.value);
-                  
     }
 
     return (

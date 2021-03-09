@@ -35,9 +35,9 @@ function Entries({entries, time, getEntries}) {
     const mappedDesktopEntries = DesktopViewEntries(entries, arrow, Link, dayjs)
     const mappedMobileEntries = mobileViewEntries(entries, arrow, Link, dayjs)
 
-    if(entriesLoading){
-        return <MyLoader/>
-    }
+    // if(entriesLoading){
+    //     return <MyLoader/>
+    // }
 
 
     if(currentWindowWidth()[0] > 700){

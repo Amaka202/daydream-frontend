@@ -39,8 +39,10 @@ function PostEntry(props) {
             if(status.status === 'error'){
                 Alert.error(status.message, 5000)
             }else{
-                Alert.success('status.message', 5000)
+                Alert.success(status.message, 5000)
                 handleClose();
+                window.location.reload();
+
             }
         }
         }, [time, status])
@@ -149,7 +151,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    editEntry: (entryData) => dispatch(editEntry(entryData))
+    editEntry: (entryId, entryData) => dispatch(editEntry(entryId, entryData))
   }
 }
 

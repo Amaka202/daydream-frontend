@@ -107,8 +107,8 @@ function Entry({entries, time, match, id, deleteEntry}) {
                         </div>
                     </div>
                 :
-                    <div>
-                        <p>Click on any Entry to view details</p>
+                    <div style={{margin:"auto"}}>
+                        <p style={{textAlign:"center", alignSelf:"center"}}>Click on any Entry to view details</p>
                     </div>
                 }
     

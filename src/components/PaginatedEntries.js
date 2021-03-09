@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import 'antd/dist/antd.css';
 import { Pagination } from 'antd';
+import { connect } from 'react-redux';
+import { getEntries } from '/Users/amaka/Desktop/daydream-frontend/src/store/actions/entriesActions.js';
 
-class PaginationUtil extends Component {
+class PaginatedEntries extends Component {
 
     constructor(props) {
         super(props);
@@ -21,11 +23,28 @@ class PaginationUtil extends Component {
         this.getAllElements();
     }
 
+    // componentDidUpdate(prevProps){
+    //     console.log('hey there');
+    //     console.log(this.props.entries);
+    //     console.log(prevProps.entries);
+    //     if(this.props.entries !== prevProps.entries){
+    //         this.setState({
+    //             allElements: this.props.entries,
+    //             totalElementsCount: this.props.entries.length
+    //         }, () => {
+    //             this.setPaginationStates();
+    //         });
+    //         console.log(this.state.allElements);
+    //         console.log('hey');
+    //      }
+    //     }
+
     async getAllElements() {
-        const allElements = await Axios.get("https://jsonplaceholder.typicode.com/posts");
+        const allElements = await this.props.getEntries();
+        const time = await this.props.time
         this.setState({
-            allElements: allElements.data,
-            totalElementsCount: allElements.data.length
+            allElements: this.props.entries,
+            totalElementsCount: this.props.entries.length
         }, () => {
             this.setPaginationStates();
         });
@@ -85,4 +104,17 @@ class PaginationUtil extends Component {
     }
 }
 
-export default PaginationUtil;
+const mapStateToProps = (state) => {
+    return {
+        entries: state.entries.entriesData,
+        time: state.entries.time,
+    }
+  }
+
+  const mapDispatchToProps = (dispatch) => {
+    return {
+        getEntries: () => dispatch(getEntries())
+    }
+  }
+  
+  export default connect(mapStateToProps,mapDispatchToProps)(PaginatedEntries);

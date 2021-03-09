@@ -61,7 +61,6 @@ export const createEntry = (entryData) => {
 export const editEntry = (entryId, entryToUpdate) => {
     const editEntryApiUrl = `https://radiant-dusk-52143.herokuapp.com/api/v1/entries/${entryId}/edit`
     return (dispatch, getState) => {
-        console.log('i am here');
         fetch(editEntryApiUrl, {
             method: 'PUT',
             mode: 'cors',

@@ -3,7 +3,7 @@ import Axios from 'axios';
 import 'antd/dist/antd.css';
 import { Pagination } from 'antd';
 import { connect } from 'react-redux';
-import { getEntries } from '/Users/amaka/Desktop/daydream-frontend/src/store/actions/entriesActions.js';
+import { getEntries } from '../store/actions/entriesActions';
 
 class PaginatedEntries extends Component {
 

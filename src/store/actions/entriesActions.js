@@ -14,7 +14,7 @@ export const getEntries = () => {
             .then((data) => data.json())
             .then((response) => {
                 dispatch({
-                    type: 'GET ENTRIES',
+                     type: 'GET ENTRIES',
                     getEntriesSuccessTime: new Date(),
                     response
                 })

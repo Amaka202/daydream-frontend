@@ -8,7 +8,7 @@ import SignedInHeader from './headers/SignedInHeader';
 import MyFooter from './MyFooter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Button, Divider, Loader } from 'rsuite';
+import { Button, Divider } from 'rsuite';
 import { Calendar, Empty } from 'antd';
 import {deleteReminder} from '../store/actions/remindersActions';
 import '../styles/reminders.css';

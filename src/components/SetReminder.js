@@ -37,6 +37,7 @@ function SetReminder({createReminder, time, reminderCreated, resetRemindersState
         }else{
             setLoading(false)
             Alert.success('Nice! Expect an email reminder 30 minuites before time!', 5000)
+            resetRemindersState()
             history.push('./reminders')
         }
     }, [ reminderCreated.createRemindersSucesstime])

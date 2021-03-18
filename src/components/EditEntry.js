@@ -28,6 +28,7 @@ function EditEntry(props) {
       const onSubmit = (values, submitProps) => {
         setLoading(true)
         editEntry(entryId, values)
+        submitProps.resetForm()
       } 
 
       useEffect(() => {
@@ -36,8 +37,11 @@ function EditEntry(props) {
         }else{
             setLoading(false);
             handleClose();
+            window.location.reload();
+
         }
         }, [status.editEntriesSuccessTime])
+
 
         useEffect(() => {
           if(status.editEntriesErrorTime){

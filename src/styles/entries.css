@@ -1,5 +1,6 @@
 .entries-container{
     background-color: white;
+    min-height: 80vh;
 }
 
 .entries-wrapper{

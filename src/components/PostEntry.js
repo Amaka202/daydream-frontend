@@ -25,6 +25,8 @@ function PostEntry(props) {
       const onSubmit = (values, submitProps) => {
         setLoading(true)
         createEntry(values)
+        submitProps.resetForm()
+
       } 
 
       useEffect(() => {
@@ -32,13 +34,7 @@ function PostEntry(props) {
             return;
         }else{
             setLoading(false);
-            if(status.status === 'success'){
-              // reset form
-              handleClose();
-            }else{
-                Alert.error(status.message, 5000);
-                handleClose();
-            }
+            handleClose();
         }
         }, [status.createEntriesSuccessTime])
 

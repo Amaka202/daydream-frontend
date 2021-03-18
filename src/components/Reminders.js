@@ -84,7 +84,7 @@ function Reminders({getReminders, reminders, deleteReminder, resetRemindersState
                             return (
                                 <div key={val.id}>
                                     <section className="reminder">
-                                        <p className="entry-date">{dayjs(handleDate((val.date))).format('ll')}</p>
+                                        <p className="entry-date">{val.date}</p>
                                         <p className="reminder-text">
                                             {val.reminder}  
                                         </p>

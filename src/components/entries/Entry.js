@@ -33,6 +33,7 @@ function Entry({entries, match, id, deleteEntry}) {
     
     useEffect(() => {
         getEntries()
+        
     }, [ entries.createEntriesSuccessTime, entries.editEntriesSuccessTime, entries.deleteEntriesSuucessTime])
 
     useEffect(() => {
@@ -159,7 +160,6 @@ function Entry({entries, match, id, deleteEntry}) {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.entries);
     return {
         entries: state.entries
     }

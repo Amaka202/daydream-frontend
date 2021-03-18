@@ -15,8 +15,9 @@ import MakeEntryButton from '../MakeEntryButton';
 import EntryCalender from './EntryCalender';
 import SignedInHeader from '../headers/SignedInHeader';
 import MyFooter from '../MyFooter';
-import { Alert } from 'antd';
+import { Alert } from 'rsuite';
 import { deleteToken } from '../helpers/saveToken';
+import { resetAuthState, resetEntriesState, resetRemindersState } from '../../store/actions/resetStateAction';
 
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
@@ -42,13 +43,16 @@ function Entries({entries, time, getEntries}) {
     const mappedDesktopEntries = DesktopViewEntries(entries.entriesData, arrow, Link, dayjs)
     const mappedMobileEntries = mobileViewEntries(entries.entriesData, arrow, Link, dayjs)
 
-    useEffect(() => {
-        if(entries.getEntriesErrorTime){
-            Alert.error('session expired', 5000)
-            deleteToken()
-            history.push('/login')
-        }
-    })
+    // useEffect(() => {
+    //     if(entries.getEntriesErrorTime){
+    //         Alert.error('session expired', 5000)
+    //         deleteToken()
+    //         resetAuthState()
+    //         resetEntriesState()
+    //         resetRemindersState()
+    //         history.push('/login')
+    //     }
+    // }, entries.getEntriesErrorTime)
 
     if(currentWindowWidth()[0] > 700){
         if(loading){
@@ -135,6 +139,7 @@ function Entries({entries, time, getEntries}) {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
         entries: state.entries,
     }

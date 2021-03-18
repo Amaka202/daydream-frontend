@@ -87,7 +87,12 @@ function Entries({entries, time, getEntries}) {
 
                 :
                 <div>
-                    <EmptyEntries />
+                    <div>
+                        <EmptyEntries />
+                    </div>
+                    <div className="entries-item">
+                        <EntryCalender />
+                    </div>
                 </div>
             }
             <footer>
@@ -124,8 +129,13 @@ function Entries({entries, time, getEntries}) {
             </div> 
             :
             <div>
-                <EmptyEntries />
-            </div>
+                    <div>
+                        <EmptyEntries />
+                    </div>
+                    <div className="entries-item">
+                        <EntryCalender />
+                    </div>
+                </div>
         }
         <footer>
                 <MyFooter />

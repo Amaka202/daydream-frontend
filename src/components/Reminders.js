@@ -69,7 +69,7 @@ function Reminders({getReminders, reminders, deleteReminder, resetRemindersState
             <header>
                 <SignedInHeader />
             </header>
-            <section className="page-padding">
+            <section className="page-padding reminder-container" >
                 <h4 className="page-title">All Reminders</h4>
                 <div>
                     <div className="reminder-btn">

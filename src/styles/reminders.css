@@ -2,6 +2,10 @@
     /* padding: 2rem; */
 }
 
+.reminder-container{
+    min-height: 80vh;
+}
+
 .reminder{
     margin-bottom: 2rem;
     padding: 0 2rem;

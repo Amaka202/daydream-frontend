@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import arrow from '../../img/arrow-left.png';
 import dayjs from 'dayjs';
 import '../../styles/entries.css';
-import { Link, Route } from "react-router-dom";
+import { Link, Route, useHistory } from "react-router-dom";
 import {connect } from 'react-redux';
 import currentWindowWidth from '../helpers/getCurrentWidth';
 import useQuerry from '../helpers/useQuerry';
@@ -15,11 +15,14 @@ import MakeEntryButton from '../MakeEntryButton';
 import EntryCalender from './EntryCalender';
 import SignedInHeader from '../headers/SignedInHeader';
 import MyFooter from '../MyFooter';
+import { Alert } from 'antd';
+import { deleteToken } from '../helpers/saveToken';
 
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
 function Entries({entries, time, getEntries}) {
+    const history = useHistory();
     let querry = useQuerry();
     const [loading, setLoading] = useState(true);
 
@@ -39,6 +42,13 @@ function Entries({entries, time, getEntries}) {
     const mappedDesktopEntries = DesktopViewEntries(entries.entriesData, arrow, Link, dayjs)
     const mappedMobileEntries = mobileViewEntries(entries.entriesData, arrow, Link, dayjs)
 
+    useEffect(() => {
+        if(entries.getEntriesErrorTime){
+            Alert.error('session expired', 5000)
+            deleteToken()
+            history.push('/login')
+        }
+    })
 
     if(currentWindowWidth()[0] > 700){
         if(loading){

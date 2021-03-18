@@ -121,6 +121,7 @@
     
     .entries-item{
         width: 100%;
+        box-shadow: none
     }
 
     .entries-section{

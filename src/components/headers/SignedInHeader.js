@@ -7,6 +7,7 @@ import logo from '../../img/logo (1).png';
 import '../../styles/signedInHeader.css'
 import currentWindowWidth from '../helpers/getCurrentWidth.js';
 import {resetAuthState, resetEntriesState,  resetRemindersState} from '../../store/actions/resetStateAction';
+import { deleteToken } from '../helpers/saveToken';
 
 
 function SignedInHeader({resetEntriesState, resetAuthState, resetRemindersState}) {
@@ -14,7 +15,7 @@ function SignedInHeader({resetEntriesState, resetAuthState, resetRemindersState}
     const [openMobileDrawer, setOpenMobileDrawer] = useState(false);
 
     const redirectToLogin = () => {
-        localStorage.removeItem('dayDreamToken');
+        deleteToken()
         resetAuthState()
         resetEntriesState()
         resetRemindersState()

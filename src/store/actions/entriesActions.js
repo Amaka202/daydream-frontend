@@ -15,14 +15,14 @@ export const getEntries = () => {
             .then((response) => {
                 dispatch({
                     type: 'GET ENTRIES',
-                    time: new Date(),
+                    getEntriesSuccessTime: new Date(),
                     response
                 })
             })
             .catch((error) => {
                 dispatch({
                     type: 'GET ENTRIES ERROR',
-                    time: new Date(),
+                    getEntriesErrorTime: new Date(),
                     error
                 })
             })
@@ -44,14 +44,14 @@ export const createEntry = (entryData) => {
             .then((response) => {
                 dispatch({
                     type: 'CREATE ENTRY SUCCESS',
-                    time: new Date(),
+                    createEntriesSuccessTime: new Date(),
                     response
                 })
             })
             .catch((error) => {
                 dispatch({
                     type: 'CREATE ENTRY ERROR',
-                    time: new Date(),
+                    createEntriesErrorTime: new Date(),
                     error
                 })
             })
@@ -74,19 +74,19 @@ export const editEntry = (entryId, entryToUpdate) => {
             .then((response) => {
                 dispatch({
                     type: 'EDIT ENTRY SUCCESS',
-                    editTime: new Date(),
+                    editEntriesSuccessTime: new Date(),
                     response
                 })
             })
             .catch((error) => {
                 dispatch({
                     type: 'EDIT ENTRY ERROR',
-                    editTime: new Date(),
+                    editEntriesErrorTime: new Date(),
                     error
                 })
             })
     }
-}
+} 
 
 export const deleteEntry = (entryId) => {
     const deleteEntryApiUrl = `https://radiant-dusk-52143.herokuapp.com/api/v1/entries/${entryId}/delete`
@@ -103,14 +103,14 @@ export const deleteEntry = (entryId) => {
             .then((response) => {
                 dispatch({
                     type: 'DELETE ENTRY SUCCESS',
-                    deleteTime: new Date(),
+                    deleteEntriesSuucessTime: new Date(),
                     response
                 })
             })
             .catch((error) => {
                 dispatch({
                     type: 'DELETE ENTRY ERROR',
-                    deleteTime: new Date(),
+                    deleteEntriesErrorTime: new Date(),
                     error
                 })
             })

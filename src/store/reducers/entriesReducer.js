@@ -5,15 +5,15 @@ const iniState = {}
 const entriesReducer = (state = iniState, action) => {
     switch (action.type) {
         case 'GET ENTRIES':
-            console.log(' successful');  
             return {
                 ...state,
                 entriesData: action.response.data,
+                getEntriesSuccessTime: action.getEntriesSuccessTime
             }
         case 'GET ENTRIES ERROR':
-            console.log('signup error');  
             return {
                 ...state,
+                getEntriesErrorTime: action.getEntriesErrorTime
              } 
          case 'CREATE ENTRY SUCCESS':
             console.log('login success');  
@@ -21,14 +21,14 @@ const entriesReducer = (state = iniState, action) => {
                 ...state,
                 entryCreated: action.response,
                 authStatus: 'success',
-                time: action.time
+                createEntriesSuccessTime: action.createEntriesSuccessTime
             }
         case 'CREATE ENTRY ERROR':
             console.log('login error');  
             return {
                 ...state,
                 postStatus: 'error',
-                time: action.time
+                createEntriesErrorTime: action.createEntriesErrorTime
 
              }
 
@@ -38,26 +38,28 @@ const entriesReducer = (state = iniState, action) => {
             return {
                 ...state,
                 editedData: action.response,
-                timeEdited: action.editTime,
+                editEntriesSuccessTime: action.editEntriesSuccessTime,
             }
         case 'EDIT ENTRY ERROR':
             console.log('edit error');  
             return {
                 ...state,
                 authStatus: 'error',
+                editEntriesErrorTime: action.editEntriesErrorTime
              }     
              
          case 'DELETE ENTRY SUCCESS':
             console.log('delete success');  
             return {
                 ...state,
-                timeEntryDeleted: action.deleteTime,
+                deleteEntriesSuucessTime: action.deleteEntriesSuucessTime,
             }
         case 'DELETE ENTRY ERROR':
             console.log('delete error');  
             return {
                 ...state,
                 authStatus: 'error',
+                deleteEntriesErrorTime: action.deleteEntriesErrorTime
              } 
         default:
             return state;

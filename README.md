@@ -1,3 +1,7 @@
+My DayDream is an online Journal where users can privately and securely pen down their toughts and feelings. It also has a reminder feature where users can set and get email reminders.
+
+Built with React, Redux, Redux Thunk
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -15,14 +15,14 @@ export const getReminders = () => {
             .then((response) => {
                 dispatch({
                     type: 'GET REMINDERS',
-                    time: new Date(),
+                    getRemindersSucesstime: new Date(),
                     response
-                })
+                 })
             })
             .catch((error) => {
                 dispatch({
                     type: 'GET REMINDERS ERROR',
-                    time: new Date(),
+                    getRemindersErrortime: new Date(),
                     error
                 })
             })
@@ -45,14 +45,14 @@ export const createReminder = (redminderData) => {
                 console.log('got here');
                 dispatch({
                     type: 'CREATE REMINDER SUCCESS',
-                    time: new Date(),
+                    createRemindersSucesstime: new Date(),
                     response
                 })
             })
             .catch((error) => {
                 dispatch({
                     type: 'CREATE REMINDER ERROR',
-                    time: new Date(),
+                    createRemindersErrortime: new Date(),
                     error
                 })
             })
@@ -75,14 +75,14 @@ export const deleteReminder = (reminderId) => {
                 console.log('git ahere');
                 dispatch({
                     type: 'DELETE REMINDER SUCCESS',
-                    deleteTime: new Date(),
+                    deleteRemindersSucesstime: new Date(),
                     response
                 })
             })
             .catch((error) => {
                 dispatch({
                     type: 'DELETE REMINDER ERROR',
-                    deleteTime: new Date(),
+                    deleteRemindersErrortime: new Date(),
                     error
                 })
             })

@@ -1,4 +1,4 @@
-My DayDream is an online Journal where users can privately and securely pen down their toughts and feelings. It also has a reminder feature where users can set and get email reminders.
+My DayDream is an online Journal where users can privately and securely pen down their thoughts and feelings. It also has a reminder feature where users can set and get email reminders.
 
 Built with React, Redux, Redux Thunk
 

@@ -2,11 +2,10 @@ import React, {useState, useEffect} from 'react'
 import { Modal } from 'antd';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Alert } from 'rsuite';
+import { Alert, Button } from 'rsuite';
 import {connect} from 'react-redux';
 import TextError from './TextError';
 import '../styles/postentry.css'
-import {Button} from 'rsuite';
 import {createEntry} from '../store/actions/entriesActions';
 import {resetEntriesState} from '../store/actions/resetStateAction';
 
@@ -29,24 +28,26 @@ function PostEntry(props) {
       } 
 
       useEffect(() => {
-        if(!time){
+        if(!status.createEntriesSuccessTime){
             return;
         }else{
             setLoading(false);
-            if(posterror) {
-              Alert.error('error creating post', 5000);
-              resetEntriesState();
-            }else if(status.status === 'success'){
-              // Alert.success(status.message, 5000);
-              resetEntriesState();
+            if(status.status === 'success'){
+              // reset form
               handleClose();
             }else{
                 Alert.error(status.message, 5000);
-                resetEntriesState();
                 handleClose();
             }
         }
-        }, [time, status])
+        }, [status.createEntriesSuccessTime])
+
+        useEffect(() => {
+          if(status.createEntriesErrorTime){
+            Alert.error('error creating post', 5000);
+            resetEntriesState();
+          }
+        }, [status.createEntriesErrorTime])
 
       const validationSchema = Yup.object({
         title: Yup.string().required('Required'),
@@ -143,9 +144,7 @@ function PostEntry(props) {
 
 const mapStateToProps = (state) => {
   return {
-      status: state.entries.entryCreated,
-      time: state.entries.time,
-      posterror: state.entries.postStatus
+      status: state.entries,
   }
 }
 

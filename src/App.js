@@ -11,7 +11,7 @@ import PostEntry from './components/PostEntry';
 import SetReminder from './components/SetReminder';
 import Entry from './components/entries/Entry';
 import {ProtectedRoute} from './components/ProtectedRoutes';
-import PaginatedEntries from './components/PaginatedEntries';
+import Entries from './components/entries/Entries';
 
 function App() {
   return (
@@ -20,12 +20,11 @@ function App() {
           <Route path='/' exact component={Home} />
           <Route path='/signup' exact component={SignUp} />
           <Route path='/login' exact component={Login} />
-          <ProtectedRoute path='/entries' exact component={DisplayEntries} />
+          <ProtectedRoute path='/entries' exact component={Entries} />
           <Route path='/entries/:id' exact component={Entry} />
           <ProtectedRoute path='/postentry' exact component={PostEntry} />
           <ProtectedRoute path='/reminders' exact component={Reminders} />
           <ProtectedRoute path='/createreminder' exact component={SetReminder} />
-          {/* <ProtectedRoute path='/pages' exact component={PaginatedEntries} /> */}
       </Switch>    
     </div>
   );

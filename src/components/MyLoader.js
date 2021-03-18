@@ -4,7 +4,7 @@ import {Loader} from 'rsuite';
 function MyLoader() {
     return (
         <div>
-            <Loader backdrop content="loading..." vertical />
+            <Loader backdrop content="loading..." size="md" vertical />
         </div>
     )
 }

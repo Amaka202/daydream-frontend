@@ -13,11 +13,11 @@ import dayjs from 'dayjs';
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
-function PostEntry(props) {
+function EditEntry(props) {
     
   const [loading, setLoading] = useState(false);
 
-    const {handleClose, show, editEntry, status, time, entryId, entry, myFormatedDate} = props;
+    const {handleClose, show, editEntry, status, entryId, entry} = props;
     const initialValues = {
         title: entry[0].title,
         date: '',
@@ -31,20 +31,20 @@ function PostEntry(props) {
       } 
 
       useEffect(() => {
-        if(!time){
+        if(!status.editEntriesSuccessTime){
             return;
         }else{
             setLoading(false);
-            if(status.status === 'error'){
-                Alert.error(status.message, 5000)
-            }else{
-                Alert.success(status.message, 5000)
-                handleClose();
-                window.location.reload();
-
-            }
+            handleClose();
         }
-        }, [time, status])
+        }, [status.editEntriesSuccessTime])
+
+        useEffect(() => {
+          if(status.editEntriesErrorTime){
+            Alert.error("error editing post", 5000)
+            
+          }
+        }, [status.editEntriesErrorTime])
 
       const validationSchema = Yup.object({
         title: Yup.string().required('Required'),
@@ -141,8 +141,7 @@ function PostEntry(props) {
 
 const mapStateToProps = (state) => {
   return {
-      status: state.entries.editedData,
-      time: state.entries.timeEdited,
+      status: state.entries,
   }
 }
 
@@ -152,5 +151,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostEntry);
+export default connect(mapStateToProps, mapDispatchToProps)(EditEntry);
 

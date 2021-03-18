@@ -5,7 +5,7 @@ import SignedInHeader from '../headers/SignedInHeader';
 import MyFooter from '../MyFooter';
 import currentWindowWidth from '../helpers/getCurrentWidth';
 import Entries from './Entries';
-import '../../styles/displayEntries.css'
+// import '../../styles/displayEntries.css'
 import Entry from './Entry';
 import EntryCalender from './EntryCalender';
 import EmptyEntries from './EmptyEntries';
@@ -16,9 +16,12 @@ function DisplayEnteries({entries}) {
             <header>
                 <SignedInHeader />
             </header>
-            {currentWindowWidth()[0] > 700 
-            ? 
-                <div>
+            <div>
+               <MakeEntryButton />
+             </div>
+            {/* {currentWindowWidth()[0] > 700  */}
+            {/* ?  */}
+                {/* <div>
                     
                     <section className="display-entries-section page-padding">
                     <section className="display-entries">
@@ -28,8 +31,8 @@ function DisplayEnteries({entries}) {
                         <EntryCalender />
                     </section>
                 </section>
-                </div>
-            :
+                </div> */}
+            {/* : */}
 
             <section className="display-entries-section page-padding">
                 <section>
@@ -40,7 +43,7 @@ function DisplayEnteries({entries}) {
                     </section>
              </section>
 
-        }
+        {/* } */}
             <footer>
                 <MyFooter />
 

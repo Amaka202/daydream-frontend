@@ -32,21 +32,21 @@ function SetReminder({createReminder, time, reminderCreated, resetRemindersState
     }
 
     useEffect(() => {
-        if(!time){
-            return
+        if(!reminderCreated.createRemindersSucesstime){
+            return;
         }else{
             setLoading(false)
-            if(reminderCreated.status === 'error'){
-                Alert.error('', 5000)
-                resetRemindersState()
-            }else {
-                Alert.success('Nice! Expect an email reminder 30 minuites before time!', 5000)
-                history.push('./reminders')
-                resetRemindersState()
-            }
+            Alert.success('Nice! Expect an email reminder 30 minuites before time!', 5000)
+            history.push('./reminders')
+        }
+    }, [ reminderCreated.createRemindersSucesstime])
+
+    useEffect(() => {
+        if(reminderCreated.createRemindersErrortime){
+            Alert.error('error creating reminder', 5000)
 
         }
-    }, [time, reminderCreated])
+    }, [reminderCreated.createRemindersErrortime])
 
     const handleDateChange = (userDate) => {
         setDateTime(userDate.getTime())
@@ -102,7 +102,6 @@ const mapStateToProps = (state) => {
     console.log(state);
     return {
         reminderCreated: state.reminders,
-        time: state.reminders.time
     }
 }
 

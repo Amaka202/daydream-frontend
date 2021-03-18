@@ -1,48 +1,44 @@
-import { RESET_REMINDERS_STATE} from '../actions/resetStateAction';
 const iniState = {}
 
 const reminderReducer = (state = iniState, action) => {
     switch (action.type) {
         case 'GET REMINDERS':
-            console.log(' successful');  
             return {
                 ...state,
                 reminderData: action.response.data,
+                getRemindersSucesstime: action.getRemindersSucesstime
             }
         case 'GET REMINDERS ERROR':
-            console.log('signup error');  
             return {
                 ...state,
+                getRemindersErrortime: action.getRemindersErrortime
              } 
          case 'CREATE REMINDER SUCCESS':
-            console.log('reminder success');  
             return {
                 ...state,
                 reminderCreated: action.response,
                 authStatus: 'success',
-                time: action.time
+                createRemindersSucesstime: action.createRemindersSucesstime
             }
         case 'CREATE REMINDER ERROR':
-            console.log('reminder error');
-            console.log(action.error);  
             return {
                 ...state,
                 reminderStatus: 'error',
-                time: action.time
+                createRemindersErrortime: action.createRemindersErrortime
 
              }    
              
          case 'DELETE REMINDER SUCCESS':
-            console.log('delete success');  
             return {
                 ...state,
-                timeReminderDeleted: action.deleteTime,
+                deleteRemindersSucesstime: action.deleteRemindersSucesstime,
             }
         case 'DELETE REMINDER ERROR':
             console.log('delete error');  
             return {
                 ...state,
                 authStatus: 'error',
+                deleteRemindersErrortime: action.deleteRemindersErrortime
              } 
 
         case 'RESET_REMINDERS_STATE':

@@ -8,7 +8,7 @@ import SignedInHeader from './headers/SignedInHeader';
 import MyFooter from './MyFooter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Button, Divider } from 'rsuite';
+import { Button, Divider, Loader } from 'rsuite';
 import { Calendar, Empty } from 'antd';
 import {deleteReminder} from '../store/actions/remindersActions';
 import '../styles/reminders.css';
@@ -19,9 +19,9 @@ var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
 
-function Reminders({getReminders, timeFetched, reminders, deleteReminder, resetRemindersState, timeReminderDeleted}) {
-    const [deleteLoading, setdeleteLoading] = useState(false);
-    const [reminderLoading, setReminderLoading] = useState(true);
+function Reminders({getReminders, reminders, deleteReminder, resetRemindersState}) {
+    
+    const [loading, setLoading] = useState(true);
 
      const history = useHistory();
 
@@ -35,18 +35,14 @@ function Reminders({getReminders, timeFetched, reminders, deleteReminder, resetR
       }
 
       const handleDate = (d) => {
-          console.log(d);
           let date = new Date(d);
-          console.log(dayjs(new Date(1615292187061).toString()).format('ll'));
           return date.toString()
-          dayjs(new Date(1615292187061).toString()).format('ll')
+        //   dayjs(new Date(1615292187061).toString()).format('ll')
       }
 
       const handleDelete = (reminderId) => {
         deleteReminder(reminderId);
-        setdeleteLoading(true)
         // resetRemindersState();
-
     }
 
     const handlecancel = () => {
@@ -56,27 +52,16 @@ function Reminders({getReminders, timeFetched, reminders, deleteReminder, resetR
       useEffect(() => {
         getReminders()
 
-    }, [ timeFetched])
+    }, [ reminders.createRemindersSucesstime, reminders. deleteRemindersSucesstime, ])
 
     useEffect(() => {
-        if(reminders){
-            setReminderLoading(false)
+        if(reminders.getRemindersSucesstime){
+            setLoading(false)
         }
-    })
+    }, [reminders.getRemindersSucesstime])
 
-    useEffect(() => {
-        if(timeReminderDeleted){
-            history.push('/reminders')
-            window.location.reload();
-        }
-    }, [timeReminderDeleted])
-
-    if(deleteLoading){
-        return <MyLoader/>
-    }
-
-    if(reminderLoading){
-        return <MyLoader/>
+    if(loading){
+        return <MyLoader />
     }
 
     return (
@@ -93,9 +78,9 @@ function Reminders({getReminders, timeFetched, reminders, deleteReminder, resetR
                 </div>
                 <section className="reminder-body flexed">
                     <div className="flex-item">
-                        {reminders && reminders.length > 0 
+                        {reminders.reminderData && reminders.reminderData.length > 0 
                             ?
-                            reminders.map((val) => {
+                            reminders.reminderData.map((val) => {
                             return (
                                 <div key={val.id}>
                                     <section className="reminder">
@@ -114,7 +99,7 @@ function Reminders({getReminders, timeFetched, reminders, deleteReminder, resetR
                                                 <div style={{color: '#FF0202', paddingTop:'1rem'}}>
                                                     {element1}
                                                 </div>
-                                            </a>
+                                             </a>
                                         </Popconfirm>
                                         
                                     </section>
@@ -147,16 +132,15 @@ function Reminders({getReminders, timeFetched, reminders, deleteReminder, resetR
             <footer>
                 <MyFooter />
             </footer>
+        
         </div>
     ) 
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.reminders);
     return {
-        reminders: state.reminders.reminderData,
-        timeFetched : state.reminders.time,
-        timeReminderDeleted: state.reminders.timeReminderDeleted
-
+        reminders: state.reminders
     }
 }
  

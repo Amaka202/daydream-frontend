@@ -18,14 +18,12 @@ var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
 
-function Entry({entries, time, match, id, deleteEntry, timeDeleted}) {
+function Entry({entries, match, id, deleteEntry}) {
 
     const history = useHistory();
     const [show, setShow] = useState(false);
 
-    // console.log(id);
     let entryId = match.params.id;
-    // console.log(entryId);
     const element1 = <FontAwesomeIcon icon={faTrash} />
     const element2 = <FontAwesomeIcon icon={faEdit} />
 
@@ -35,23 +33,22 @@ function Entry({entries, time, match, id, deleteEntry, timeDeleted}) {
     
     useEffect(() => {
         getEntries()
-    }, [ time])
+    }, [ entries.createEntriesSuccessTime, entries.editEntriesSuccessTime, entries.deleteEntriesSuucessTime])
 
     useEffect(() => {
-        if(timeDeleted){
+        if(entries.deleteEntriesSuucessTime){
             history.push('/entries')
-            window.location.reload();
         }
-    }, [timeDeleted])
+    }, [entries.deleteEntriesSuucessTime])
 
     const myFormatedDate = (date) => {
         return dayjs(date).format('ll')
     }
 
-    const desktopEntry = entries && entries.filter(val => val.id === id) 
-    const mobileEntry = entries && entries.filter(val => val.id === entryId) 
-    entries && console.log(entries);
-    mobileEntry && console.log(mobileEntry);
+    const desktopEntry = entries.entriesData && entries.entriesData.filter(val => val.id === id) 
+    const mobileEntry = entries.entriesData && entries.entriesData.filter(val => val.id === entryId) 
+    
+    entries && console.log(mobileEntry);
 
     const handlecancel = () => { 
         return;
@@ -64,7 +61,6 @@ function Entry({entries, time, match, id, deleteEntry, timeDeleted}) {
     const hideModal = () => {
         setShow(false)
     }
-    // entry && console.log(entry[0].date);
 
     if(currentWindowWidth()[0] > 700){
 
@@ -73,7 +69,7 @@ function Entry({entries, time, match, id, deleteEntry, timeDeleted}) {
             <div>
                 {id 
                 ?
-                  desktopEntry && 
+                  entries.entriesData && 
                         <div className="entry-section">
                         <div>
                         <div style={{marginBottom: '2rem'}}>
@@ -112,8 +108,8 @@ function Entry({entries, time, match, id, deleteEntry, timeDeleted}) {
                         </div>
                     </div>
                 :
-                    <div style={{margin:"auto"}}>
-                        <p style={{textAlign:"center", alignSelf:"center"}}>Click on any Entry to view details</p>
+                    <div className="text-info">
+                        <p>Click on any Entry to view details</p>
                     </div>
                 }
     
@@ -155,7 +151,7 @@ function Entry({entries, time, match, id, deleteEntry, timeDeleted}) {
                                 </a>
                             </Popconfirm>
                         </div>
-                        <EditEntry show={show} handleClose={hideModal} entryId={entryId} entry={mobileEntry} myFormatedDate={myFormatedDate}/>
+                            <EditEntry show={show} handleClose={hideModal} entryId={entryId} entry={mobileEntry} myFormatedDate={myFormatedDate}/>
                         </div>
                     </div>
         )
@@ -163,10 +159,9 @@ function Entry({entries, time, match, id, deleteEntry, timeDeleted}) {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.entries);
     return {
-        entries: state.entries.entriesData,
-      time: state.entries.time,
-      timeDeleted: state.entries.timeEntryDeleted
+        entries: state.entries
     }
   }
 

@@ -1,6 +1,7 @@
 import {getToken} from '../../components/helpers/getToken';
 const entriesApiUrl = 'https://radiant-dusk-52143.herokuapp.com/api/v1/entries'
 const deleteEntryApiUrl = 'https://radiant-dusk-52143.herokuapp.com/api/v1/entries/:entryId/delete'
+
 export const getEntries = () => {
     return (dispatch, getState) => {
         fetch(entriesApiUrl, {
@@ -11,7 +12,9 @@ export const getEntries = () => {
                 Authorization: `Bearer ${getToken()}`
             },
         })
-            .then((data) => data.json())
+            .then((data) => {
+                return data.json()
+            })
             .then((response) => {
                 dispatch({
                      type: 'GET ENTRIES',

@@ -149,7 +149,6 @@ function Entries({entries, time, getEntries}) {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         entries: state.entries,
     }

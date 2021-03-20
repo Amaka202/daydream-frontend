@@ -1,5 +1,3 @@
-import {RESET_AUTH_STATE} from '../actions/resetStateAction';
-
 const iniState = {
     status: 'notAuth'
 } 

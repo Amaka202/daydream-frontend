@@ -17,6 +17,7 @@ import sad from '../../img/sad.png'
 import happy from '../../img/happy.png'
 import mixed from '../../img/mixed.png'
 import depressed from '../../img/depressed.png'
+import MyLoader from '../MyLoader';
 
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
@@ -26,7 +27,7 @@ function Entry({entries, match, id, deleteEntry, getEntries}) {
 
     const history = useHistory();
     const [show, setShow] = useState(false);
-
+    const [loading, setLoading] = useState(true);
     let entryId = match.params.id;
     const element1 = <FontAwesomeIcon icon={faTrash} />
     const element2 = <FontAwesomeIcon icon={faEdit} />
@@ -41,7 +42,13 @@ function Entry({entries, match, id, deleteEntry, getEntries}) {
         }, [ entries.createEntriesSuccessTime, entries.editEntriesSuccessTime, entries.deleteEntriesSuucessTime])
 
 
-    const myFormatedDate = (date) => {
+     useEffect(() => {
+         if(entries.getEntriesSuccessTime){
+             setLoading(false)
+         }
+     }, [entries.getEntriesSuccessTime]) 
+
+  const myFormatedDate = (date) => {
         return dayjs(date).format('ll')
     }
 
@@ -61,6 +68,9 @@ function Entry({entries, match, id, deleteEntry, getEntries}) {
     }
 
     if(currentWindowWidth()[0] > 700){
+        if(loading){
+            return <MyLoader />
+        } 
 
         return (
             
@@ -118,6 +128,9 @@ function Entry({entries, match, id, deleteEntry, getEntries}) {
             </div>
         )
     } else{
+        if(loading){
+            return <MyLoader />
+        } 
         return (
         <div className="entry-section">
                         <div>

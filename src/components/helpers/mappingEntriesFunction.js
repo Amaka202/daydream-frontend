@@ -1,4 +1,4 @@
-export const DesktopViewEntries = (arr, arrow, Link, dayjs) => {
+export const DesktopViewEntries = (arr, arrow, Link, dayjs, Tag) => {
     return arr && arr.map((val) => {
         return (
             <section key={val.id}>

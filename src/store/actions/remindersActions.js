@@ -42,7 +42,6 @@ export const createReminder = (redminderData) => {
         })
             .then((data) => data.json())
             .then((response) => {
-                console.log('got here');
                 dispatch({
                     type: 'CREATE REMINDER SUCCESS',
                     createRemindersSucesstime: new Date(),
@@ -72,7 +71,6 @@ export const deleteReminder = (reminderId) => {
         })
             .then((data) => data.json())
             .then((response) => {
-                console.log('git ahere');
                 dispatch({
                     type: 'DELETE REMINDER SUCCESS',
                     deleteRemindersSucesstime: new Date(),

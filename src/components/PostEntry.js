@@ -13,7 +13,7 @@ import {resetEntriesState} from '../store/actions/resetStateAction';
 function PostEntry(props) {
     
   const [loading, setLoading] = useState(false);
-    const {handleClose, show, createEntry, status, time, posterror, resetEntriesState} = props;
+    const {handleClose, show, createEntry, status, resetEntriesState} = props;
 
     const initialValues = {
         title: "",

@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import TextError from './TextError';
 import '../styles/postentry.css'
 import {Button} from 'rsuite';
-import {editEntry} from '../store/actions/entriesActions';
+import {editEntry, getEntries} from '../store/actions/entriesActions';
 import dayjs from 'dayjs';
 
 var localizedFormat = require('dayjs/plugin/localizedFormat')
@@ -17,7 +17,7 @@ function EditEntry(props) {
     
   const [loading, setLoading] = useState(false);
 
-    const {handleClose, show, editEntry, status, entryId, entry} = props;
+    const {handleClose, show, editEntry, status, entryId, entry, getEntries} = props;
     const initialValues = {
         title: entry[0].title,
         date: '',
@@ -25,9 +25,10 @@ function EditEntry(props) {
         entry: entry[0].entry
       }
       
-      const onSubmit = (values, submitProps) => {
+      const onSubmit = async (values, submitProps) => {
         setLoading(true)
         editEntry(entryId, values)
+        // await getEntries()
         submitProps.resetForm()
       } 
 
@@ -37,8 +38,6 @@ function EditEntry(props) {
         }else{
             setLoading(false);
             handleClose();
-            window.location.reload();
-
         }
         }, [status.editEntriesSuccessTime])
 
@@ -151,7 +150,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    editEntry: (entryId, entryData) => dispatch(editEntry(entryId, entryData))
+    editEntry: (entryId, entryData) => dispatch(editEntry(entryId, entryData)),
+    getEntries: () => dispatch(getEntries())
   }
 }
 

@@ -5,20 +5,24 @@ import {withRouter} from "react-router";
 import { Popconfirm } from 'antd';
 import { useHistory} from 'react-router-dom';
 import dayjs from 'dayjs';
+import {Tag} from 'rsuite';
 import currentWindowWidth from '../helpers/getCurrentWidth';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import tooTired from '../../img/too-tired.png'
 import '../../styles/entries.css'
 import EditEntry from '../EditEntry';
-
+import { moodImage } from '../helpers/moodImageFunc';
+import sad from '../../img/sad.png'
+import happy from '../../img/happy.png'
+import mixed from '../../img/mixed.png'
+import depressed from '../../img/depressed.png'
 
 var localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
 
-function Entry({entries, match, id, deleteEntry}) {
+function Entry({entries, match, id, deleteEntry, getEntries}) {
 
     const history = useHistory();
     const [show, setShow] = useState(false);
@@ -28,19 +32,14 @@ function Entry({entries, match, id, deleteEntry}) {
     const element2 = <FontAwesomeIcon icon={faEdit} />
 
     const handleDelete = (id) => {
-        deleteEntry(id);
+        deleteEntry(id); 
+        history.push('/entries')
     }
     
     useEffect(() => {
-        getEntries()
-        
-    }, [ entries.createEntriesSuccessTime, entries.editEntriesSuccessTime, entries.deleteEntriesSuucessTime])
+            getEntries()
+        }, [ entries.createEntriesSuccessTime, entries.editEntriesSuccessTime, entries.deleteEntriesSuucessTime])
 
-    useEffect(() => {
-        if(entries.deleteEntriesSuucessTime){
-            history.push('/entries')
-        }
-    }, [entries.deleteEntriesSuucessTime])
 
     const myFormatedDate = (date) => {
         return dayjs(date).format('ll')
@@ -49,8 +48,6 @@ function Entry({entries, match, id, deleteEntry}) {
     const desktopEntry = entries.entriesData && entries.entriesData.filter(val => val.id === id) 
     const mobileEntry = entries.entriesData && entries.entriesData.filter(val => val.id === entryId) 
     
-    entries && console.log(mobileEntry);
-
     const handlecancel = () => { 
         return;
     }
@@ -79,7 +76,11 @@ function Entry({entries, match, id, deleteEntry}) {
                         </div>
                         <div>
                             <div className="entry-img-div">
-                                <img src={tooTired} alt=""/>
+                                <img src={happy} alt=""/>
+                            <div>
+                                <Tag color="red">{desktopEntry[0].mood}</Tag>
+
+                            </div>
                             </div>
                             <div className="entry-text">
                                 <p>
@@ -126,13 +127,19 @@ function Entry({entries, match, id, deleteEntry}) {
                         </div>
                         <div>
                             <div className="entry-img-div">
-                                <img src={tooTired} alt=""/>
+                                <img src={moodImage(mobileEntry[0].mood)} alt=""/>
+                                <div>
+                                    <Tag color="#FFDB58">{mobileEntry[0].mood}</Tag>
+
+                                </div>
                             </div>
                             <div className="entry-text">
                                 <p>
+                                    {console.log("hey from mobileEntry", mobileEntry[0].entry)}
                                {mobileEntry[0].entry}
                                 </p>
                             </div>
+                            
                         </div>
                         <div className="trash-icon">
                             <div style={{color: '#AEAEAE'}} onClick={showModal}>

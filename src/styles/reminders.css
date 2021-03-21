@@ -9,7 +9,7 @@
 .reminder{
     margin-bottom: 2rem;
     padding: 0 2rem;
-}
+} 
 
 .reminder-calender{
     padding: 0 2rem;
@@ -30,25 +30,40 @@
     display: flex;
     justify-content: center;
     align-content: center;
+    padding: 0 10%;
+}
+
+.reminder-center{
+    /* margin: auto; */
 }
 
 .reminder-form-container form{
-    display: inline-block;
-    margin: auto;
-}
-
-.reminder-form-container label, .reminder-form-container input, .reminder-form-container textarea{
-    margin-bottom: 1rem;
+    /* display: inline-block;
+    margin: auto; */
 }
 
 .reminder-form-container textarea{
+    border-radius: 5px;
+}
+
+.reminder-form-container label, .reminder-form-container input, .reminder-form-container textarea{
+    margin-bottom: 1em;
+    width: 50vw;
+}
+
+/* .reminder-form-container textarea{
     height: 10em;
     width: 100%;
     border-radius: 10px;
-}
+} */
 
 @media only screen and (max-width: 700px){
     .reminder-form{
         flex-direction: column;
+    }
+
+    .reminder-form-container label, .reminder-form-container input, .reminder-form-container textarea{
+        margin-bottom: 1em;
+        width: 80vw;
     }
 }

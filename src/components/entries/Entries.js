@@ -27,18 +27,30 @@ function Entries({entries, time, getEntries}) {
     let querry = useQuerry();
     const [loading, setLoading] = useState(true);
 
-
-    useEffect(() => {
+    useEffect(() => {      
         getEntries()
 
     }, [ entries.createEntriesSuccessTime, entries.editEntriesSuccessTime, entries.deleteEntriesSuucessTime])
  
 
+    // useEffect(() => {
+        
+    // }, [])
+
     useEffect(() => {
         if(entries.getEntriesSuccessTime){
             setLoading(false)
+            // if(entries.notAuthorized){
+            //     Alert.error('session expired', 5000)
+            //     deleteToken()
+            //     history.push('/login')
+            //     window.location.reload(false)
+            // }
         }
+
     }, [entries.getEntriesSuccessTime])
+
+
 
     const mappedDesktopEntries = DesktopViewEntries(entries.entriesData, arrow, Link, dayjs)
     const mappedMobileEntries = mobileViewEntries(entries.entriesData, arrow, Link, dayjs)
@@ -47,9 +59,9 @@ function Entries({entries, time, getEntries}) {
     //     if(entries.getEntriesErrorTime){
     //         Alert.error('session expired', 5000)
     //         deleteToken()
-    //         resetAuthState()
-    //         resetEntriesState()
-    //         resetRemindersState()
+            // resetAuthState()
+            // resetEntriesState()
+            // resetRemindersState()
     //         history.push('/login')
     //     }
     // }, entries.getEntriesErrorTime)
@@ -149,6 +161,7 @@ function Entries({entries, time, getEntries}) {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.entries);
     return {
         entries: state.entries,
     }

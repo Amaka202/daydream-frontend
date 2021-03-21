@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 import {Tag} from 'rsuite';
 import currentWindowWidth from '../helpers/getCurrentWidth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faBackward, faEdit, faLongArrowAltLeft, faTrash } from '@fortawesome/free-solid-svg-icons';
 import tooTired from '../../img/too-tired.png'
 import '../../styles/entries.css'
 import EditEntry from '../EditEntry';
@@ -16,6 +16,7 @@ import { moodImage } from '../helpers/moodImageFunc';
 import sad from '../../img/sad.png'
 import happy from '../../img/happy.png'
 import mixed from '../../img/mixed.png'
+import anxious from '../../img/anxious1.png'
 import depressed from '../../img/depressed.png'
 import MyLoader from '../MyLoader';
 
@@ -31,10 +32,16 @@ function Entry({entries, match, id, deleteEntry, getEntries}) {
     let entryId = match.params.id;
     const element1 = <FontAwesomeIcon icon={faTrash} />
     const element2 = <FontAwesomeIcon icon={faEdit} />
+    const element3 = <FontAwesomeIcon icon={faLongArrowAltLeft} />
 
     const handleDelete = (id) => {
         deleteEntry(id); 
         history.push('/entries')
+    }
+
+    const handleBack = () => {
+        history.push('/entries')
+
     }
     
     useEffect(() => {
@@ -86,7 +93,19 @@ function Entry({entries, match, id, deleteEntry, getEntries}) {
                         </div>
                         <div>
                             <div className="entry-img-div">
-                                <img src={happy} alt=""/>
+                                <img 
+                                    src={desktopEntry[0].mood === 'happy' ?
+                                    happy :
+                                    desktopEntry[0].mood === 'sad' ?
+                                    sad :
+                                    desktopEntry[0].mood === 'depressed' ?
+                                    depressed :
+                                    desktopEntry[0].mood === 'anxious' ?
+                                    anxious :
+                                    mixed
+                                    } 
+                                    alt=""
+                                />
                             <div>
                                 <Tag color="red">{desktopEntry[0].mood}</Tag>
 
@@ -134,15 +153,30 @@ function Entry({entries, match, id, deleteEntry, getEntries}) {
         return (
         <div className="entry-section">
                         <div>
+                            <p className="arrow-back" onClick={handleBack}>
+                                {element3}
+                            </p>
                         <div style={{marginBottom: '2rem'}}>
                             <p className="entry-date">{dayjs(mobileEntry[0].date).format('ll')}</p>
                             <p className="entry-title">{mobileEntry[0].title}</p>
                         </div>
                         <div>
                             <div className="entry-img-div">
-                                <img src={moodImage(mobileEntry[0].mood)} alt=""/>
+                            <img 
+                                    src={mobileEntry[0].mood === 'happy' ?
+                                    happy :
+                                    mobileEntry[0].mood === 'sad' ?
+                                    sad :
+                                    mobileEntry[0].mood === 'depressed' ?
+                                    depressed :
+                                    mobileEntry[0].mood === 'anxious' ?
+                                    anxious :
+                                    mixed
+                                    } 
+                                    alt=""
+                                />
                                 <div>
-                                    <Tag color="#FFDB58">{mobileEntry[0].mood}</Tag>
+                                    <Tag color="red">{mobileEntry[0].mood}</Tag>
 
                                 </div>
                             </div>

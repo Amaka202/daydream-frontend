@@ -7,15 +7,16 @@ import {Button} from 'rsuite';
 import {createReminder} from '../store/actions/remindersActions';
 import { useHistory } from 'react-router';
 import {resetRemindersState} from '../store/actions/resetStateAction';
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
 
 function SetReminder({createReminder, time, reminderCreated, resetRemindersState}) {
     const history = useHistory();
     const [dateTime, setDateTime] = useState("");
     const [reminder, setReminder] = useState("");
     const [loading, setLoading] = useState(false);
-    
+    const element3 = <FontAwesomeIcon icon={faLongArrowAltLeft} />
+
     const handleSubmit = () => {
         if(dateTime === ""){
             Alert.error('Please choose a time', 5000)
@@ -29,6 +30,11 @@ function SetReminder({createReminder, time, reminderCreated, resetRemindersState
             }
             createReminder(reminderData)
         }
+    }
+
+    const handleBack = () => {
+        history.push('/reminders')
+
     }
 
     useEffect(() => {
@@ -58,8 +64,11 @@ function SetReminder({createReminder, time, reminderCreated, resetRemindersState
     }
 
     return (
-        <div className="reminder-form-container page-padding">
-            <div className="">
+            <div className="reminder-form-container page-padding">
+            <div className="reminder-center">
+            <p className="arrow-back" onClick={handleBack}>
+                {element3}
+            </p>
             <form className="reminder-form">
                 <h4 className="page-title">Create a reminder</h4>
                 <div>
@@ -68,6 +77,7 @@ function SetReminder({createReminder, time, reminderCreated, resetRemindersState
                     </label>
                     <DatePicker
                         oneTap
+                        block='true'
                         onChange={(userDate) => handleDateChange(userDate)}
                         placeholder="Select Date/Time"
                         format="YYYY-MM-DD HH:mm"
@@ -100,7 +110,6 @@ function SetReminder({createReminder, time, reminderCreated, resetRemindersState
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         reminderCreated: state.reminders,
     }

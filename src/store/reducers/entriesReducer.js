@@ -3,6 +3,7 @@ const iniState = {}
 const entriesReducer = (state = iniState, action) => {
     switch (action.type) {
         case 'GET ENTRIES':
+            console.log(action.response);
             return {
                 ...state,
                 entriesData: action.response.data,

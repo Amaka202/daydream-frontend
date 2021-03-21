@@ -104,6 +104,7 @@ function PostEntry(props) {
                     <span className="required-star"> *</span>
                 </label>
                 <Field as="select" name="mood">
+                  <option value="" selected disabled>Mood</option>
                     <option value="happy">Happy</option>
                     <option value="sad">Sad</option>
                     <option value="anxious">Anxious</option>

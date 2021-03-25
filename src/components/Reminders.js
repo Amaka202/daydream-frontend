@@ -138,7 +138,6 @@ function Reminders({getReminders, reminders, deleteReminder, resetRemindersState
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.reminders);
     return {
         reminders: state.reminders
     }

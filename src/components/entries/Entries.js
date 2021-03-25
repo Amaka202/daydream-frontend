@@ -98,11 +98,11 @@ function Entries({entries, time, getEntries}) {
                     </div>
 
                 :
-                <div>
-                    <div>
+                <div className="flexed" style={{marginTop:"2rem"}}>
+                    <div className="flex-item">
                         <EmptyEntries />
                     </div>
-                    <div className="entries-item">
+                    <div className="flex-item">
                         <EntryCalender />
                     </div>
                 </div>
@@ -161,7 +161,6 @@ function Entries({entries, time, getEntries}) {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.entries);
     return {
         entries: state.entries,
     }

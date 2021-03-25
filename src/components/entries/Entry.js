@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 import {Tag} from 'rsuite';
 import currentWindowWidth from '../helpers/getCurrentWidth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBackward, faEdit, faLongArrowAltLeft, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {  faEdit, faLongArrowAltLeft, faTrash } from '@fortawesome/free-solid-svg-icons';
 import tooTired from '../../img/too-tired.png'
 import '../../styles/entries.css'
 import EditEntry from '../EditEntry';
@@ -182,7 +182,6 @@ function Entry({entries, match, id, deleteEntry, getEntries}) {
                             </div>
                             <div className="entry-text">
                                 <p>
-                                    {console.log("hey from mobileEntry", mobileEntry[0].entry)}
                                {mobileEntry[0].entry}
                                 </p>
                             </div>
